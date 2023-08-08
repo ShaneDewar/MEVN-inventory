@@ -1,4 +1,5 @@
 import Object from '@/components/Object.vue'
+import Server from '@/components/Server.vue'
 import About from '@/views/About.vue'
 import Home from '@/views/Home.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -6,7 +7,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/about', name: 'About', component: About },
-    { path: '/objects/:id', name: 'Object', component: Object }
+    { path: '/objects/:id', name: 'Object', component: Object },
+    { path: '/server', name: 'Server', component: Server }
+
 ]
 
 const router = createRouter({
