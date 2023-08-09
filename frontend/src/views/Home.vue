@@ -1,5 +1,5 @@
 <script>
-import { getObjects } from '@/api'
+import { getObjects } from '@/frontend-services'
 export default {
     data() {
         return {

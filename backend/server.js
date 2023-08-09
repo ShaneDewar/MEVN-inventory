@@ -11,6 +11,16 @@ server.get("/server", (req, res) => {
     res.json(response_data);
 });
 
+server.get("/server/ax", (req, res) => {
+    const response_data =
+    {
+        message: "Hello Front from AxBack.",
+    };
+    res.json(response_data);
+    console.log("Ax");
+});
+
+
 server.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
