@@ -3,7 +3,7 @@
         <h2>{{ object.name }}</h2>>
     </div>
     <div>
-        <button @click="getObjectById">Get Object #</button>
+        <button @click="increment"> !{{ counter }}! </button>
     </div>
 </template>
     
@@ -15,7 +15,8 @@ import ObjectService from '@/frontend-services/ObjectService'
 export default {
     data() {
         return {
-            object: {}
+            object: {},
+            counter: 0,
         }
     },
     beforeMount() {
@@ -25,15 +26,23 @@ export default {
             })
     },
     mounted() {
-        getObjectById(id) {
-            ObjectService.get(1)
-                .then(response => {
-                    console.log(response.data);
-                })
-                .catch(x => {
-                    console.log(x);
-                })
-        }
+
+        ObjectService.get(1)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(x => {
+                console.log(x);
+            })
+
+    },
+    methods: {
+        increment() {
+            this.counter++;
+        },
+    },
+    updated() {
+        console.log("clicking!");
     }
 }
 </script>
