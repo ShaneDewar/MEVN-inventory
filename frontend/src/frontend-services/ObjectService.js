@@ -12,6 +12,9 @@ class ObjectService {
     getAll() {
         return http.get(`/server/ax`);
     }
+    get(id) {
+        return http.get(`/objects/${id}`);
+    }
 }
 
 export default new ObjectService();
