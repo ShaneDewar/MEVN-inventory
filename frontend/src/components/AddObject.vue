@@ -5,7 +5,7 @@
 </template>
     
 <script>
-import { fetchObject } from '@/api'
+import { fetchObject } from "@/frontend-services/index"
 export default {
     data() {
         return {

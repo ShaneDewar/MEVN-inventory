@@ -1,5 +1,6 @@
 <template>
   <div id="nav">
+    <router-link to="/">Object List</router-link>
     <router-link to="/objects/1">Object1</router-link>
     <router-link to="/objects/2">Object2</router-link>
   </div>

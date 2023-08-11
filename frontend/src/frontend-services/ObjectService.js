@@ -10,10 +10,10 @@ const http = axios.create({
 
 class ObjectService {
     getAll() {
-        return http.get(`/server/ax`);
+        return http.get(`/objects/1`);
     }
     get(id) {
-        return http.get(`/objects/${id}`);
+        return http.get(`/server/objects/${id}`);
     }
 }
 
