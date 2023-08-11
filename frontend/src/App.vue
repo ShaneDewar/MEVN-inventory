@@ -7,7 +7,11 @@
   </div>
 
   <div class="container">
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <transition name="fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -23,5 +27,19 @@ header {
     padding-right: calc(var(--section-gap) / 2);
   }
 
+}
+
+a.router-link-active {
+  border-bottom: 1px solid white;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
 }
 </style>
