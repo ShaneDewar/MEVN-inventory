@@ -23,6 +23,7 @@ server.get("/server/ax", (req, res) => {
 server.get("/objects/1", (req, res) => {
     const response_data =
     {
+        object: "I'm a fancy object in server.js!",
         message: "This is object #1!.",
         id: 1,
     };
