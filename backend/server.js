@@ -1,7 +1,14 @@
 const express = require("express")
 const server = express()
+const cors = require("cors");
 
 const port = 3033;
+
+var cors_options = {
+    origin: "http://localhost:3033"
+};
+
+server.use(cors(cors_options));
 
 // Create new object stub
 server.post("/create", (req, res) => {
