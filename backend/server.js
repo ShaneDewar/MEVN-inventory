@@ -5,7 +5,7 @@ const cors = require("cors");
 const port = 3033;
 
 var cors_options = {
-    origin: "http://localhost:3033"
+    origin: ["http://localhost:3033", "http://localhost:5173"]
 };
 
 server.use(cors(cors_options));
