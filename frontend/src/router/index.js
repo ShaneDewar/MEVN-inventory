@@ -1,14 +1,13 @@
+import AddObject from '@/components/AddObject.vue'
 import Object from '@/components/Object.vue'
 import ObjectList from '@/components/ObjectList.vue'
-import Server from '@/components/Server.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-    { path: '/', name: 'Home', component: ObjectList },
+    { path: '/', alias: "/objects", name: 'Object List', component: ObjectList },
     { path: '/objects/:id', name: 'Object', component: Object },
-    { path: '/objects', name: 'ObjectList', component: ObjectList },
-    { path: '/server', name: 'Server', component: Server }
+    { path: '/create', name: 'create', component: AddObject }
 
 ]
 
