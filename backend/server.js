@@ -3,10 +3,13 @@ const server = express()
 
 const port = 3033;
 
-server.get("/server", (req, res) => {
+// Create new object stub
+server.post("/create", (req, res) => {
     const response_data =
     {
-        message: "Hello Front from Back.",
+        id: -1,
+        object: "create_new_stub"
+        message: "Beep Beep Boop you created a new object.",
     };
     res.json(response_data);
 });
