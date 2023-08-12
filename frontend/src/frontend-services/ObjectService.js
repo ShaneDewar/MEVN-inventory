@@ -13,7 +13,7 @@ class ObjectService {
         return http.get(`/object`);
     }
     get(id) {
-        return http.get(`/objects/${id}`);
+        return http.get(`/object/${id}`);
     }
 }
 

@@ -19,7 +19,7 @@ server.post("/create", (req, res) => {
         message: "Beep Beep Boop you created a new object.",
     };
     res.json(response_data);
-    console.log(object);
+    console.log("Object /post create");
 });
 
 // Get all objects
@@ -32,7 +32,7 @@ server.get("/object", (req, res) => {
 
     };
     res.json(response_data);
-    console.log(object);
+    console.log("All Objects /get");
 });
 
 // Get specific object stub
@@ -45,7 +45,7 @@ server.get("/object/:id", (req, res) => {
 
     };
     res.json(response_data);
-    console.log(object);
+    console.log("Specific Object /get");
 });
 
 // Update specific object
@@ -58,7 +58,7 @@ server.put("/object/:id", (req, res) => {
 
     };
     res.json(response_data);
-    console.log(object);
+    console.log("Object /put");
 });
 
 // Delete specific object
@@ -71,7 +71,7 @@ server.delete("/object/:id", (req, res) => {
 
     };
     res.json(response_data);
-    console.log(object);
+    console.log("Object delete");
 });
 
 
