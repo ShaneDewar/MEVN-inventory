@@ -8,41 +8,65 @@ server.post("/create", (req, res) => {
     const response_data =
     {
         id: -1,
-        object: "create_new_stub"
+        object: "create_new_stub",
         message: "Beep Beep Boop you created a new object.",
     };
     res.json(response_data);
+    console.log(object);
 });
 
-server.get("/server/ax", (req, res) => {
+// Get all objects
+server.get("/object", (req, res) => {
     const response_data =
     {
-        message: "Hello Front from AxBack.",
+        id: 7,
+        object: "All_objects_phony",
+        message: "This is a dictionary of all the objects, probably.!.",
+
     };
     res.json(response_data);
-    console.log("Ax");
+    console.log(object);
 });
 
-server.get("/objects/1", (req, res) => {
+// Get specific object stub
+server.get("/object/:id", (req, res) => {
     const response_data =
     {
-        object: "I'm a fancy object in server.js!",
-        message: "This is object #1!.",
         id: 1,
+        object: "#1_object_phony_response",
+        message: "This is the one object you asked for",
+
     };
     res.json(response_data);
-    console.log("1111");
+    console.log(object);
 });
 
-server.get("/server/objects/1", (req, res) => {
+// Update specific object
+server.put("/object/:id", (req, res) => {
     const response_data =
     {
-        message: "This is object #1, but #2!.",
-        id: 1,
+        id: 3,
+        object: "Update object #3",
+        message: "Okay, object 3 is updated.",
+
     };
     res.json(response_data);
-    console.log("1111");
+    console.log(object);
 });
+
+// Delete specific object
+server.delete("/object/:id", (req, res) => {
+    const response_data =
+    {
+        id: 9,
+        object: "Delete object 9 stub",
+        message: "Okay, object 9 is deleted.",
+
+    };
+    res.json(response_data);
+    console.log(object);
+});
+
 
 server.listen(port, () => {
     console.log(`Server started on port ${port}`);
