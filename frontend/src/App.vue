@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
-    <router-link to="/">Object List</router-link>
-    <router-link to="/objects/1">Object1</router-link>
-    <router-link to="/objects/2">Object2</router-link>
+    <router-link to="/">Home</router-link>
+    <router-link to="/objects">Object List</router-link>
+    <router-link to="/create">Add Object</router-link>
   </div>
 
   <div class="container">
