@@ -8,13 +8,13 @@ const http = axios.create({
 });
 
 
-class ObjectService {
+class LibraryService {
     getAll() {
-        return http.get(`/object`);
+        return http.get(`/media`);
     }
     get(id) {
-        return http.get(`/object/${id}`);
+        return http.get(`/media/${id}`);
     }
 }
 
-export default new ObjectService();
+export default new LibraryService();

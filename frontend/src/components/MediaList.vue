@@ -12,7 +12,7 @@
 <script>
 
 // import { getObjects } from '@/frontend-services';
-import ObjectService from "../frontend-services/ObjectService";
+import LibraryService from "../frontend-services/LibraryService.js";
 
 export default {
     name: "object-list",
@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         retrieveObjects() {
-            ObjectService.getAll()
+            LibraryService.getAll()
                 .then(response => {
                     this.objects = response.data;
                     console.log(response.data);

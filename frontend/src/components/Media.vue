@@ -9,8 +9,8 @@
     
 <script>
 
-import { fetchObject } from '@/frontend-services'
-import ObjectService from '@/frontend-services/ObjectService'
+// import { fetchObject } from '@/frontend-services'
+import LibraryService from '@/frontend-services/LibraryService.js';
 
 export default {
     data() {
@@ -19,15 +19,15 @@ export default {
             counter: 0,
         }
     },
-    beforeMount() {
-        fetchObject(parseInt(this.$route.params.id))
-            .then((response) => {
-                this.object = response
-            })
-    },
+    // beforeMount() {
+    //     fetchObject(parseInt(this.$route.params.id))
+    //         .then((response) => {
+    //             this.object = response
+    //         })
+    // },
     mounted() {
 
-        ObjectService.get(1)
+        LibraryService.get(1)
             .then(response => {
                 console.log(response.data);
             })

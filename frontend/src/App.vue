@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
-    <router-link to="/objects">Object List</router-link>
-    <router-link to="/create">Add Object</router-link>
+    <router-link to="/media">Library Collection List</router-link>
+    <router-link to="/create">Add Media</router-link>
   </div>
 
   <div class="container">
