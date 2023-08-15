@@ -1,8 +1,8 @@
 <template>
     <div>
         <ul>
-            <li :class="{ active: index == currentIndex }" v-for="(object, index) in objects" :key="index">
-                {{ currentObject.message }}
+            <li :class="{ active: index == currentIndex }" v-for="(media, index) in library" :key="index">
+                {{ currentMedia.summary }}
             </li>
         </ul>
     </div>
@@ -18,7 +18,7 @@ export default {
     name: "object-list",
     data() {
         return {
-            objects: [],
+            library: [],
             currentObject: null,
             currentIndex: -1,
             message: ""
@@ -51,7 +51,7 @@ export default {
     },
     mounted() {
         this.retrieveObjects();
-        this.setFocusObject(this.objects, 0)
+        this.setFocusObject(this.library, 0)
         // this.clickAllObjects();
     }
 };
