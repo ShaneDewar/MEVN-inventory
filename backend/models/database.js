@@ -7,6 +7,6 @@ const db = {};
 
 db.mongoose = mongoose;
 db.url = db_config.url;
-db.objects = require("./objects.model.js")(mongoose);
+db.objects = require("./media.model.js")(mongoose);
 
 module.exports = db;

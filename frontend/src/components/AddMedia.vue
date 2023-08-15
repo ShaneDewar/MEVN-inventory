@@ -1,30 +1,30 @@
 <template>
-  <div class="add_object_form">
+  <div class="add_media_form">
     <div v-if="!submitted">
       <div>
-        <label for="object_name">Object Name: </label>
+        <label for="media_name">Media Title: </label>
         <input
           type="text"
-          id="object_name"
+          id="media_name"
           required
-          v-model="object.object"
-          name="object_name"
+          v-model="media.media"
+          name="media_name"
         />
       </div>
 
       <div>
-        <label for="object_message">Message: </label>
+        <label for="media_summary">Summary: </label>
         <input
           type="text"
-          id="object_messsage"
+          id="media_summary"
           required
-          v-model="object.message"
-          name="object_message"
+          v-model="media.summary"
+          name="media_summary"
         />
       </div>
 
-      <button @click="addObject" class="btn submit_success">
-        Add this Object
+      <button @click="addMedia" class="btn submit_success">
+        Add this media to your library.
       </button>
     </div>
   </div>
@@ -34,25 +34,25 @@
 export default {
   data() {
     return {
-      object: {
+      media: {
         id: null,
-        object: "",
-        message: "",
+        media: "",
+        summary: "",
       },
       submitted: false,
     };
   },
   // beforeMount() {
-  //     fetchObject(parseInt(this.$route.params.id))
+  //     fetchmedia(parseInt(this.$route.params.id))
   //         .then((response) => {
-  //             this.object = response
+  //             this.media = response
   //         })
   // }
   methods: {
-    addObject() {
+    addMedia() {
       let data = {
-        object: this.object.object,
-        message: this.object.message,
+        media: this.media.media,
+        summary: this.media.summary,
       };
       console.log(data);
     },

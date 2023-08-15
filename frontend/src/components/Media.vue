@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ object.name }}</h2>
+    <h2>{{ media.title }}</h2>
     >
   </div>
   <div>
@@ -15,7 +15,8 @@ import LibraryService from "@/frontend-services/LibraryService.js";
 export default {
   data() {
     return {
-      object: {},
+      media: {},
+      title: "Default",
       counter: 0,
     };
   },

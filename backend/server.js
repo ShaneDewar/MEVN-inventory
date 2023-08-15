@@ -25,68 +25,68 @@ db.mongoose
         process.exit();
     });
 
-// Create new object stub
+// Create new media stub
 server.post("/create", (req, res) => {
     const response_data =
     {
         id: -1,
-        object: "create_new_stub",
-        message: "Beep Beep Boop you created a new object.",
+        media: "create_new_stub",
+        summary: "Beep Beep Boop you created a new media.",
     };
     res.json(response_data);
-    console.log("Object /post create");
+    console.log("Media /post create");
 });
 
-// Get all objects
-server.get("/object", (req, res) => {
+// Get all medias
+server.get("/media", (req, res) => {
     const response_data =
     {
         id: 7,
-        object: "All_objects_phony",
-        message: "This is a dictionary of all the objects, probably.!.",
+        media: "All_medias_phony",
+        summary: "This is a dictionary of all the medias, probably.!.",
 
     };
     res.json(response_data);
-    console.log("All Objects /get");
+    console.log("All Medias /get");
 });
 
-// Get specific object stub
-server.get("/object/:id", (req, res) => {
+// Get specific media stub
+server.get("/media/:id", (req, res) => {
     const response_data =
     {
         id: 1,
-        object: "#1_object_phony_response",
-        message: "This is the one object you asked for",
+        media: "#1_media_phony_response",
+        summary: "This is the one media you asked for",
 
     };
     res.json(response_data);
-    console.log("Specific Object /get");
+    console.log("Specific Media /get");
 });
 
-// Update specific object
-server.put("/object/:id", (req, res) => {
+// Update specific media
+server.put("/media/:id", (req, res) => {
     const response_data =
     {
         id: 3,
-        object: "Update object #3",
-        message: "Okay, object 3 is updated.",
+        media: "Update media #3",
+        summary: "Okay, media 3 is updated.",
 
     };
     res.json(response_data);
-    console.log("Object /put");
+    console.log("Media /put");
 });
 
-// Delete specific object
-server.delete("/object/:id", (req, res) => {
+// Delete specific media
+server.delete("/media/:id", (req, res) => {
     const response_data =
     {
         id: 9,
-        object: "Delete object 9 stub",
-        message: "Okay, object 9 is deleted.",
+        media: "Delete media 9 stub",
+        summary: "Okay, media 9 is deleted.",
 
     };
     res.json(response_data);
-    console.log("Object delete");
+    console.log("Media delete");
 });
 
 

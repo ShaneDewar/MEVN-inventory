@@ -1,8 +1,8 @@
 module.exports = mongoose => {
     let schema = mongoose.Schema(
         {
-            object: String,
-            message: String
+            media: String,
+            summary: String
         },
         { timestamps: true }
     );
@@ -14,6 +14,6 @@ module.exports = mongoose => {
 
     });
 
-    const Object = mongoose.model("object", schema);
-    return Object;
+    const Media = mongoose.model("media", schema);
+    return Media;
 };

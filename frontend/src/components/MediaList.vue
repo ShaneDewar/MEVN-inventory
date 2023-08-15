@@ -18,29 +18,29 @@
 import LibraryService from "../frontend-services/LibraryService.js";
 
 export default {
-  name: "object-list",
+  name: "media-list",
   data() {
     return {
       library: [],
-      currentObject: null,
+      currentMedia: null,
       currentIndex: -1,
       message: "",
     };
   },
   methods: {
-    retrieveObjects() {
+    retrieveMedia() {
       LibraryService.getAll()
         .then((response) => {
-          this.objects = response.data;
+          this.library = response.data;
           console.log(response.data);
         })
         .catch((x) => {
           console.log(x);
         });
     },
-    setFocusObject(object, index) {
-      this.currentObject = object;
-      this.currentIndex = object ? index : -1;
+    setFocusMedia(media, index) {
+      this.currentMedia = media;
+      this.currentIndex = media ? index : -1;
       // },
       // clickAllObjects() {
       //     getObjects().then(response => {
@@ -51,8 +51,8 @@ export default {
     },
   },
   mounted() {
-    this.retrieveObjects();
-    this.setFocusObject(this.library, 0);
+    this.retrieveMedia();
+    this.setFocusMedia(this.library, 0);
     // this.clickAllObjects();
   },
 };
