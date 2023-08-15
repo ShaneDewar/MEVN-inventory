@@ -27,7 +27,6 @@ header {
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
-
 }
 
 a.router-link-active {
