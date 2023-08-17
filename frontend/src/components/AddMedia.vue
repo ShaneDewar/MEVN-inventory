@@ -27,11 +27,18 @@
         Add this media to your library.
       </button>
     </div>
+    <div v-else>
+      <h3>Submitted Media Creation</h3>
+      <button class="btn btn-success" @click="newMedia">Add Media</button>
+    </div>
   </div>
 </template>
 
 <script>
+import LibraryService from "@/frontend-services/LibraryService.js";
+
 export default {
+  name: "create-media",
   data() {
     return {
       media: {
@@ -42,19 +49,27 @@ export default {
       submitted: false,
     };
   },
-  // beforeMount() {
-  //     fetchmedia(parseInt(this.$route.params.id))
-  //         .then((response) => {
-  //             this.media = response
-  //         })
-  // }
   methods: {
     addMedia() {
       let data = {
         media: this.media.media,
         summary: this.media.summary,
       };
-      console.log(data);
+
+      LibraryService.create(data)
+        .then((response) => {
+          this.media.id = response.data.id;
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .catch((x) => {
+          console.log(x);
+        });
+    },
+
+    newMedia() {
+      this.submitted = false;
+      this.media = {};
     },
   },
 };
