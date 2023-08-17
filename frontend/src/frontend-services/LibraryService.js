@@ -16,7 +16,7 @@ class LibraryService {
   }
 
   create(data) {
-    return http.post("/media", data);
+    return http.post("/create", data);
   }
 }
 
