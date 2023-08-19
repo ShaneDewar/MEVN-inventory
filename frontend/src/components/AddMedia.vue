@@ -283,8 +283,8 @@ export default {
   methods: {
     addMedia() {
       let data = {
-        media: this.media.media,
-        summary: this.media.summary,
+        title: this.media.title,
+        authors: this.media.authors,
       };
 
       LibraryService.create(data)
