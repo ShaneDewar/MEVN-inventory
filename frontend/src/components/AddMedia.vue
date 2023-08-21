@@ -22,7 +22,7 @@
           name="media_summary"
         />
       </div> -->
-      <form @submit.prevent="addMedia">
+      <form v-on:submit.prevent="addMedia">
         <div class="media">
           <h1>{{ media.title }}</h1>
           <h2>
@@ -286,6 +286,11 @@ export default {
   },
   methods: {
     addMedia() {
+      if (!this.media.title || !this.media.authors) {
+        console.log("Title and Authors required!");
+        return -1; // Don't reset add media form just revert back to input.
+      }
+
       let data = {
         title: this.media.title,
         authors: this.media.authors,
@@ -295,7 +300,6 @@ export default {
         .then((response) => {
           this.media.id = response.data.id;
           console.log(response.data);
-          console.log(data);
           this.submitted = true;
         })
         .catch((x) => {
