@@ -20,8 +20,8 @@
               v-model="media.title"
               name="media_title"
             />
-            <p class="error_message" v-if="media.errors.title">
-              {{ media.errors.title }}
+            <p class="error_message" v-if="errors.title">
+              {{ errors.title }}
             </p>
           </div>
 
@@ -111,16 +111,6 @@
               </li>
             </ul>
           </div>
-          <!-- <div>
-          <label for="media_format">Format: </label>
-          <input
-            type="text"
-            id="media_format"
-            required
-            v-model="media.format"
-            name="media_format"
-          />
-        </div> -->
 
           <div>
             <label for="media_publish_date">Publish date: </label>
@@ -263,16 +253,16 @@ export default {
         isbn: "",
         size: "",
         notes: [""],
-        errors: {
-          title: "",
-        },
+      },
+      errors: {
+        title: "",
       },
       submitted: false,
     };
   },
   methods: {
     validateTitle() {
-      this.media.errors.title =
+      this.errors.title =
         this.media.title.length >= 1 ? "" : "Title is required.";
     },
     addMedia() {
@@ -281,7 +271,7 @@ export default {
         title: this.media.title,
         authors: this.media.authors,
       };
-      if (!this.media.errors.title) {
+      if (!this.errors.title) {
         LibraryService.create(data)
           .then((response) => {
             this.media.id = response.data.id;
