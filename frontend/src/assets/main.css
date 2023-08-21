@@ -23,13 +23,14 @@ a,
 
 @media (min-width: 1024px) {
   body {
+    padding: 6rem;
     display: flex;
     place-items: center;
   }
 
   #app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    grid-template-columns: 2fr 1fr;
+    padding: 2 2rem;
   }
 }

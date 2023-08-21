@@ -1,36 +1,16 @@
 <template>
+  <div class="media">
+    <h1>{{ media.title }}</h1>
+    <h2>
+      Properties with * after them can accept multiple values separated by a
+      comma. Value1,Value2,Value3,etc
+    </h2>
+  </div>
   <div class="add_media_form">
     <div v-if="!submitted">
-      <!-- <div>
-        <label for="media_name">Media Title: </label>
-        <input
-          type="text"
-          id="media_name"
-          required
-          v-model="media.media"
-          name="media_name"
-        />
-      </div>
-
-      <div>
-        <label for="media_summary">Summary: </label>
-        <input
-          type="text"
-          id="media_summary"
-          required
-          v-model="media.summary"
-          name="media_summary"
-        />
-      </div> -->
-      <form v-on:submit.prevent="addMedia">
-        <div class="media">
-          <h1>{{ media.title }}</h1>
-          <h2>
-            Properties with * after them can accept multiple values separated by
-            a comma. Value1,Value2,Value3,etc
-          </h2>
-          <br />
-
+      <br />
+      <form @submit.prevent="addMedia">
+        <div>
           <div>
             <label for="media_title">Title: </label>
             <input
