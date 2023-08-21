@@ -130,6 +130,7 @@
               id="media_date_added"
               required
               v-model="media.date_added"
+              placeholder=""
               name="media_date_added"
             />
           </div>
@@ -244,7 +245,7 @@ export default {
         authors: [""],
         format: "",
         publish_date: Date,
-        date_added: { type: Date, default: Date.now },
+        date_added: "",
         genres: [""],
         have_used: Boolean,
         date_last_used: Date,
@@ -261,6 +262,11 @@ export default {
     };
   },
   methods: {
+    getTodayDate() {
+      let today = new Date().getDate();
+      this.media.date_added = today;
+      console.log(today);
+    },
     validateTitle() {
       this.errors.title =
         this.media.title.length >= 1 ? "" : "Title is required.";
@@ -290,6 +296,9 @@ export default {
       this.submitted = false;
       this.media = {};
     },
+  },
+  mounted() {
+    this.getTodayDate();
   },
 };
 </script>
