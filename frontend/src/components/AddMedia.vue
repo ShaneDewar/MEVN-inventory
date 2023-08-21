@@ -20,7 +20,9 @@
               v-model="media.title"
               name="media_title"
             />
-            <p v-if="media.errors.title">{{ media.errors.title }}</p>
+            <p class="error_message" v-if="media.errors.title">
+              {{ media.errors.title }}
+            </p>
           </div>
 
           <div>
@@ -29,7 +31,6 @@
               type="text"
               id="media_authors"
               required
-              v-model="media.authors"
               name="media_authors"
             />
           </div>
@@ -233,7 +234,7 @@
 
     <div v-else>
       <h3>Submitted Media Creation</h3>
-      <button class="btn btn-success" @click="newMedia">Add Media</button>
+      <button class="btn btn-success" @click="newMedia">Add More Media</button>
     </div>
   </div>
 </template>
@@ -269,26 +270,29 @@ export default {
     };
   },
   methods: {
-    validateFields() {
+    validateTitle() {
       this.media.errors.title =
-        this.media.title >= 1 ? "" : "Title is required.";
+        this.media.title.length >= 1 ? "" : "Title is required.";
     },
     addMedia() {
-      this.validateFields();
+      this.validateTitle();
       let data = {
         title: this.media.title,
         authors: this.media.authors,
       };
-
-      LibraryService.create(data)
-        .then((response) => {
-          this.media.id = response.data.id;
-          console.log(response.data);
-          this.submitted = true;
-        })
-        .catch((x) => {
-          console.log(x);
-        });
+      if (!this.media.errors.title) {
+        LibraryService.create(data)
+          .then((response) => {
+            this.media.id = response.data.id;
+            console.log(response.data);
+            this.submitted = true;
+          })
+          .catch((x) => {
+            console.log(x);
+          });
+      } else {
+        console.log("Need a title");
+      }
     },
 
     newMedia() {
@@ -299,4 +303,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.error_message {
+  color: red;
+}
+</style>
