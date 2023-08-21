@@ -10,6 +10,7 @@ var cors_options = {
 
 server.use(cors(cors_options));
 server.use(express.json());
+server.use(express.urlencoded({ extended: true })); //x-www-form-urlencoded coverage.
 
 const db = require("../backend/models/database.js");
 db.mongoose
@@ -35,7 +36,7 @@ server.post("/create", (req, res) => {
     summary: "Beep Beep Boop you created a new media.",
   };
   res.json(response_data);
-  console.log(req.data.title, req.data.authors);
+  console.log(req.body.title, req.body.authors);
   console.log("Media /post create");
 });
 
