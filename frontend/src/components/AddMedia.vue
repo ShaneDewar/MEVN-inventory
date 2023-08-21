@@ -31,6 +31,7 @@
               type="text"
               id="media_authors"
               required
+              v-model="media.authors"
               name="media_authors"
             />
           </div>
@@ -226,15 +227,15 @@
             />
           </div>
         </div>
+        <button type="submit" @click="addMedia" class="btn submit_success">
+          Add this media to your library.
+        </button>
       </form>
-      <button @click="addMedia" class="btn submit_success">
-        Add this media to your library.
-      </button>
     </div>
 
     <div v-else>
       <h3>Submitted Media Creation</h3>
-      <button class="btn btn-success" @click="newMedia">Add More Media</button>
+      <button class="btn" @click="createAnother">Add More Media</button>
     </div>
   </div>
 </template>
@@ -295,7 +296,7 @@ export default {
       }
     },
 
-    newMedia() {
+    createAnother() {
       this.submitted = false;
       this.media = {};
     },
