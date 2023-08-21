@@ -40,6 +40,7 @@
               v-model="media.title"
               name="media_title"
             />
+            <p v-if="media.errors.title">{{ media.errors.title }}</p>
           </div>
 
           <div>
@@ -280,17 +281,20 @@ export default {
         isbn: "",
         size: "",
         notes: [""],
+        errors: {
+          title: "",
+        },
       },
       submitted: false,
     };
   },
   methods: {
+    validateFields() {
+      this.media.errors.title =
+        this.media.title >= 1 ? "" : "Title is required.";
+    },
     addMedia() {
-      if (!this.media.title || !this.media.authors) {
-        console.log("Title and Authors required!");
-        return -1; // Don't reset add media form just revert back to input.
-      }
-
+      this.validateFields();
       let data = {
         title: this.media.title,
         authors: this.media.authors,
