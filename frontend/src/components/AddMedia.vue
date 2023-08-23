@@ -265,9 +265,9 @@ export default {
     getTodayDate() {
       let today = new Date();
       console.log(today);
-      return `${today.getDate()} ${
-        today.getMonth() + 1
-      } ${today.getFullYear()}`;
+      return `${today.getDate()}-${(today.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}-${today.getFullYear()}`;
     },
     validateTitle() {
       this.errors.title =
