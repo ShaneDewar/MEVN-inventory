@@ -130,7 +130,7 @@
               id="media_date_added"
               required
               v-model="media.date_added"
-              placeholder=""
+              placeholder="media.date_added"
               name="media_date_added"
             />
           </div>
@@ -245,7 +245,7 @@ export default {
         authors: [""],
         format: "",
         publish_date: Date,
-        date_added: "",
+        date_added: this.getTodayDate(),
         genres: [""],
         have_used: Boolean,
         date_last_used: Date,
@@ -263,9 +263,11 @@ export default {
   },
   methods: {
     getTodayDate() {
-      let today = new Date().getDate();
-      this.media.date_added = today;
+      let today = new Date();
       console.log(today);
+      return `${today.getDate()} ${
+        today.getMonth() + 1
+      } ${today.getFullYear()}`;
     },
     validateTitle() {
       this.errors.title =
@@ -276,7 +278,10 @@ export default {
       let data = {
         title: this.media.title,
         authors: this.media.authors,
+        date_added: this.media.date_added,
       };
+      console.log(data);
+
       if (!this.errors.title) {
         LibraryService.create(data)
           .then((response) => {
@@ -296,9 +301,6 @@ export default {
       this.submitted = false;
       this.media = {};
     },
-  },
-  mounted() {
-    this.getTodayDate();
   },
 };
 </script>
