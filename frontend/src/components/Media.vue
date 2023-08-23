@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// import { fetchObject } from '@/frontend-services'
 import LibraryService from "@/frontend-services/LibraryService.js";
 
 export default {
@@ -20,12 +19,6 @@ export default {
       counter: 0,
     };
   },
-  // beforeMount() {
-  //     fetchObject(parseInt(this.$route.params.id))
-  //         .then((response) => {
-  //             this.object = response
-  //         })
-  // },
   mounted() {
     LibraryService.get(1)
       .then((response) => {

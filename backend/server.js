@@ -14,12 +14,7 @@ server.use(express.urlencoded({ extended: true })); //x-www-form-urlencoded cove
 
 const db = require("../backend/models/database.js");
 db.mongoose
-  .connect(db.url, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-    // username: credentials.username,
-    // password: credentials.password
-  })
+  .connect(db.url, {})
   .then(() => {
     console.log("Connected to the database.");
   })
