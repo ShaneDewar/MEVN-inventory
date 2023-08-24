@@ -242,18 +242,18 @@ export default {
         id: null,
         media: "",
         title: "",
-        authors: [""],
+        authors: [],
         format: "",
-        publish_date: Date,
-        date_added: this.getTodayDate(),
-        genres: [""],
-        have_used: Boolean,
-        date_last_used: Date,
-        keywords: [""],
-        languages: [""],
+        publish_date: "",
+        date_added: "",
+        genres: [],
+        have_used: "",
+        date_last_used: "",
+        keywords: [],
+        languages: [],
         isbn: "",
         size: "",
-        notes: [""],
+        notes: [],
       },
       errors: {
         title: "",
@@ -296,11 +296,14 @@ export default {
         console.log("Need a title");
       }
     },
-
     createAnother() {
       this.submitted = false;
       this.media = {};
     },
+  },
+  beforeMount() {
+    this.media.date_added = this.getTodayDate();
+    console.log(this.media.date_added);
   },
 };
 </script>
