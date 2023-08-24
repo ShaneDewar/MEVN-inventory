@@ -12,7 +12,7 @@ server.use(cors(cors_options));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true })); //x-www-form-urlencoded coverage.
 
-const db = require("../backend/models/database.js");
+const db = require("./models/database.js");
 db.mongoose
   .connect(db.url, {})
   .then(() => {
@@ -23,6 +23,11 @@ db.mongoose
     process.exit();
   });
 
+require("./routes/media.routes.js")(server);
+
+server.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 server.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });

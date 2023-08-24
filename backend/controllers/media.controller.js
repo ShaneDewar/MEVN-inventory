@@ -1,4 +1,4 @@
-const db = require("../backend/models/database.js");
+const db = require("../models/database.js");
 const Media = db.media;
 
 exports.create = (req, res) => {

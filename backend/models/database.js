@@ -8,6 +8,6 @@ const db = {};
 db.mongoose = mongoose;
 db.url = db_config.url;
 
-db.media = require("./media.model.js")(mongoose);
+db.media = require("../models/media.model.js")(mongoose);
 
 module.exports = db;

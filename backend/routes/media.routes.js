@@ -7,5 +7,7 @@ module.exports = (routes) => {
   router.post("/create", media.create);
 
   // Find all Media
-  router.get("/findAll", media.findAll);
+  router.get("/media", media.findAll);
+
+  routes.use("/", router);
 };
