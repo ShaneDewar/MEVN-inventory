@@ -6,7 +6,7 @@ module.exports = (mongoose) => {
       authors: [String],
       format: String,
       publish_date: Date,
-      date_added: { type: Date, default: Date.now },
+      date_added: Date,
       genres: [String],
       have_used: Boolean,
       date_last_used: Date,
