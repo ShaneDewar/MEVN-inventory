@@ -53,6 +53,22 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+// Fiind a specific media by id
+exports.findById = (req, res) => {
+  const id = req.params.id;
+
+  Media.findById(id)
+    .then((data) => {
+      if (!data)
+        res.status(404).send({ message: "Not found Media with id " + id });
+      else res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error retrieving Media with id=" + id });
+    });
+};
+
 //   // Create new media stub
 //   server.post("/create", (req, res) => {
 //     const response_data = {

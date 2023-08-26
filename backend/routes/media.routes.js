@@ -9,5 +9,8 @@ module.exports = (routes) => {
   // Find all Media
   router.get("/media", media.findAll);
 
+  // Find One by ID
+  router.get("/media/:id", media.findById);
+
   routes.use("/", router);
 };
