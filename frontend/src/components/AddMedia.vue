@@ -225,7 +225,10 @@
     </div>
 
     <div v-else>
-      <h3>Submitted Media Creation</h3>
+      <h3>
+        Added the entry {{ this.media.title }} to your library. It's ID is:
+        {{ this.media.id }}
+      </h3>
       <button class="btn" @click="createAnother">Add More Media</button>
     </div>
   </div>
