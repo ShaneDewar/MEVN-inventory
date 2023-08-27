@@ -1,8 +1,9 @@
 <template>
   <div class="list-grid">
     <div class="list">
-      <h3>Media in your Library:</h3>
-      <ul>
+      <h2>Media in Library:</h2>
+      Click title to select.
+      <ul class="list-items">
         <li
           :class="{ active: index == currentIndex }"
           v-for="(media, index) in library"
@@ -16,10 +17,11 @@
 
     <div class="summary">
       <div v-if="currentMedia">
-        <h4>This Media:</h4>
         <div>
-          <label>Title:</label> {{ currentMedia.title }}<br />
-          <label>Authors:</label> {{ currentMedia.authors }}
+          <label class="green summary-label">Title:</label>
+          {{ currentMedia.title }}<br />
+          <label class="green summary-label">Authors:</label>
+          {{ currentMedia.authors }}
         </div>
       </div>
     </div>
@@ -67,9 +69,13 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
 .list {
   grid-column: 1;
-  color: red;
+}
+
+.list-items {
+  color: rgb(70, 72, 185);
 }
 
 .summary {
