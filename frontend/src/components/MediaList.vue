@@ -1,20 +1,29 @@
 <template>
   <div>
+    <h3>Media in your Library:</h3>
     <ul>
       <li
         :class="{ active: index == currentIndex }"
         v-for="(media, index) in library"
         :key="index"
+        @click="setFocusMedia(media, index)"
       >
-        {{ currentMedia.summary }}
+        {{ media.title }}
       </li>
     </ul>
   </div>
-  <!-- <div> <button @click="clickAllObjects()">Get Objects</button></div> -->
+
+  <div>
+    <div v-if="currentMedia">
+      <h4>This Media:</h4>
+      <div>
+        <label><strong>Title:</strong></label> {{ currentMedia.title }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-// import { getObjects } from '@/frontend-services';
 import LibraryService from "../frontend-services/LibraryService.js";
 
 export default {
@@ -24,7 +33,6 @@ export default {
       library: [],
       currentMedia: null,
       currentIndex: -1,
-      message: "",
     };
   },
   methods: {
@@ -33,6 +41,7 @@ export default {
         .then((response) => {
           this.library = response.data;
           console.log(response.data);
+          this.setFocusMedia(this.library[0], 0);
         })
         .catch((x) => {
           console.log(x);
@@ -41,19 +50,11 @@ export default {
     setFocusMedia(media, index) {
       this.currentMedia = media;
       this.currentIndex = media ? index : -1;
-      // },
-      // clickAllObjects() {
-      //     getObjects().then(response => {
-      //         this.objects = response.data;
-      //         this.currentObject = response.name;
-      //         console.log(this.objects);
-      //     })
+      console.log(this.library, "lib");
     },
   },
   mounted() {
     this.retrieveMedia();
-    this.setFocusMedia(this.library, 0);
-    // this.clickAllObjects();
   },
 };
 </script>
