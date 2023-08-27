@@ -8,6 +8,10 @@
   font-weight: normal;
 }
 
+.container {
+  padding-top: 7em
+}
+
 a,
 .green {
   text-decoration: none;
@@ -30,7 +34,7 @@ a,
 
   #app {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     padding: 2 2rem;
   }
 }

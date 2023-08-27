@@ -1,23 +1,26 @@
 <template>
-  <div>
-    <h3>Media in your Library:</h3>
-    <ul>
-      <li
-        :class="{ active: index == currentIndex }"
-        v-for="(media, index) in library"
-        :key="index"
-        @click="setFocusMedia(media, index)"
-      >
-        {{ media.title }}
-      </li>
-    </ul>
-  </div>
+  <div class="list-grid">
+    <div class="list">
+      <h3>Media in your Library:</h3>
+      <ul>
+        <li
+          :class="{ active: index == currentIndex }"
+          v-for="(media, index) in library"
+          :key="index"
+          @click="setFocusMedia(media, index)"
+        >
+          {{ media.title }}
+        </li>
+      </ul>
+    </div>
 
-  <div>
-    <div v-if="currentMedia">
-      <h4>This Media:</h4>
-      <div>
-        <label><strong>Title:</strong></label> {{ currentMedia.title }}
+    <div class="summary">
+      <div v-if="currentMedia">
+        <h4>This Media:</h4>
+        <div>
+          <label>Title:</label> {{ currentMedia.title }}<br />
+          <label>Authors:</label> {{ currentMedia.authors }}
+        </div>
       </div>
     </div>
   </div>
@@ -59,4 +62,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.list {
+  grid-column: 1;
+  color: red;
+}
+
+.summary {
+  grid-column: 3;
+}
+</style>
