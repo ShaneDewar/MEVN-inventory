@@ -18,6 +18,10 @@ class LibraryService {
   create(data) {
     return http.post("/create", data);
   }
+
+  delete(id) {
+    return http.delete(`/media/${id}`);
+  }
 }
 
 export default new LibraryService();

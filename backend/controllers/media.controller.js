@@ -60,11 +60,33 @@ exports.findById = (req, res) => {
 
   Media.findById(id)
     .then((data) => {
-      if (!data)
-        res.status(404).send({ message: "Not found Media with id " + id });
+      if (!data) res.status(404).send({ message: `Media ID${id} not found.` });
       else res.send(data);
     })
     .catch((err) => {
       res.status(500).send({ message: "Error retrieving Media with id=" + id });
+    });
+};
+
+// Delete a Media by id
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Media.deleteById(id)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Failed to delete Media with ID${id}. Nothing with that ID found.`,
+        });
+      } else {
+        res.send({
+          message: `Media ID${id} was deleted successfully!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `Error deleting Media ID${id}`,
+      });
     });
 };

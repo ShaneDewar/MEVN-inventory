@@ -12,5 +12,8 @@ module.exports = (routes) => {
   // Find One by ID
   router.get("/media/:id", media.findById);
 
+  // Delete Media by ID
+  router.delete("/media/:id", media.delete);
+
   routes.use("/", router);
 };
