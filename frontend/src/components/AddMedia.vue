@@ -33,6 +33,7 @@
               required
               v-model="media.authors"
               name="media_authors"
+              placeholder="Author 1, Author 2, ..."
             />
             <p class="error_message" v-if="errors.authors">
               {{ errors.authors }}
@@ -147,6 +148,7 @@
               id="media_genres"
               v-model="media.genres"
               name="media_genres"
+              placeholder="Genre 1, Genre 2, ..."
             />
           </div>
 
@@ -179,6 +181,7 @@
               id="media_keywords"
               v-model="media.keywords"
               name="media_keywords"
+              placeholder="Skiing, Equipment, Switzerland ..."
             />
           </div>
 
@@ -189,6 +192,7 @@
               id="media_languages"
               v-model="media.languages"
               name="media_languages"
+              placeholder="PHP, French, Morse..."
             />
           </div>
 
@@ -219,14 +223,16 @@
               id="media_notes"
               v-model="media.notes"
               name="media_notes"
-              placeholder="Some interesting notes."
+              placeholder="Some interesting notes., Another Interesting note."
             />
           </div>
         </div>
+      </form>
+      <div>
         <button type="submit" @click="addMedia" class="btn submit_success">
           Add this media to your library.
         </button>
-      </form>
+      </div>
     </div>
 
     <div v-else>
@@ -337,5 +343,9 @@ export default {
 <style>
 .error_message {
   color: red;
+}
+
+.btn {
+  margin-top: 2rem;
 }
 </style>
