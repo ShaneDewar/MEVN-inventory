@@ -34,9 +34,15 @@
               v-model="media.authors"
               name="media_authors"
             />
+            <p class="error_message" v-if="errors.authors">
+              {{ errors.authors }}
+            </p>
           </div>
           <div>
             Format:
+            <p class="error_message" v-if="errors.format">
+              {{ errors.format }}
+            </p>
             <ul>
               <li>
                 <input
@@ -117,7 +123,6 @@
             <input
               type="date"
               id="media_publish_date"
-              required
               v-model="media.publish_date"
               name="media_publish_date"
             />
@@ -260,6 +265,8 @@ export default {
       },
       errors: {
         title: "",
+        authors: "",
+        format: "",
       },
       submitted: false,
     };
@@ -272,9 +279,15 @@ export default {
         .toString()
         .padStart(2, "0")}-${today.getDate()}`;
     },
-    validateTitle() {
+    validateRequired() {
       this.errors.title =
         this.media.title.length >= 1 ? "" : "Title is required.";
+      this.errors.authors =
+        this.media.authors.length >= 1
+          ? ""
+          : "At least one author is required.";
+      this.errors.format =
+        this.media.format.length >= 1 ? "" : "A format is required.";
     },
     splitAndTrimWS(x) {
       let items = x.split(",");
@@ -285,17 +298,17 @@ export default {
       return trimmedItems;
     },
     addMedia() {
-      this.validateTitle();
-      let authorsArray = this.splitAndTrimWS(this.media.authors);
-      let data = {
-        title: this.media.title,
-        authors: authorsArray,
-        date_added: this.media.date_added,
-        format: this.media.format,
-      };
-      console.log(data);
+      this.validateRequired();
+      if (!this.errors.title && !this.errors.authors && !this.errors.format) {
+        let authorsArray = this.splitAndTrimWS(this.media.authors);
+        let data = {
+          title: this.media.title,
+          authors: authorsArray,
+          date_added: this.media.date_added,
+          format: this.media.format,
+        };
+        console.log(data);
 
-      if (!this.errors.title) {
         LibraryService.create(data)
           .then((response) => {
             this.media.id = response.data.id;
@@ -306,7 +319,7 @@ export default {
             console.log(x);
           });
       } else {
-        console.log("Need a title");
+        console.log(this.errors);
       }
     },
     createAnother() {
