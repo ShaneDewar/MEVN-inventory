@@ -25,6 +25,7 @@
           <label class="green summary-label">Format:</label>
           {{ currentMedia.format }}<br />
         </div>
+        <button class="delete" @click="deleteMedia">Delete this media</button>
       </div>
     </div>
   </div>
@@ -52,6 +53,15 @@ export default {
         })
         .catch((x) => {
           console.log(x);
+        });
+    },
+    deleteMedia() {
+      LibraryService.delete(this.currentMedia.id)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
         });
     },
     setFocusMedia(media, index) {

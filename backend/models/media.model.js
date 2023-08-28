@@ -1,6 +1,6 @@
 module.exports = (mongoose) => {
   // Properties which can have more than one value have plural keys
-  let schema = mongoose.Schema(
+  const schema = mongoose.Schema(
     {
       title: String,
       authors: [String],
@@ -25,6 +25,11 @@ module.exports = (mongoose) => {
     return object;
   });
 
+  schema.statics.deleteById = function (id) {
+    return this.deleteOne({ _id: id });
+  };
+
   const Media = mongoose.model("media", schema);
+
   return Media;
 };
