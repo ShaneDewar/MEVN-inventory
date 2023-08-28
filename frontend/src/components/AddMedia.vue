@@ -276,11 +276,20 @@ export default {
       this.errors.title =
         this.media.title.length >= 1 ? "" : "Title is required.";
     },
+    splitAndTrimWS(x) {
+      let items = x.split(",");
+      let trimmedItems = [];
+      for (const i of items) {
+        trimmedItems.push(i.trim());
+      }
+      return trimmedItems;
+    },
     addMedia() {
       this.validateTitle();
+      let authorsArray = this.splitAndTrimWS(this.media.authors);
       let data = {
         title: this.media.title,
-        authors: this.media.authors,
+        authors: authorsArray,
         date_added: this.media.date_added,
         format: this.media.format,
       };
