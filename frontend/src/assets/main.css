@@ -7,7 +7,6 @@
 }
 
 .container {
-  position: relative;
   padding-top: 1rem
 }
 
@@ -27,7 +26,6 @@ a,
 @media (min-width: 1024px) {
   body {
     padding: 2rem;
-    display: flex;
   }
 
   #app {

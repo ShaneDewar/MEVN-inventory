@@ -282,6 +282,7 @@ export default {
         title: this.media.title,
         authors: this.media.authors,
         date_added: this.media.date_added,
+        format: this.media.format,
       };
       console.log(data);
 

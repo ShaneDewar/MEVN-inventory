@@ -21,7 +21,9 @@
           <label class="green summary-label">Title:</label>
           {{ currentMedia.title }}<br />
           <label class="green summary-label">Authors:</label>
-          {{ currentMedia.authors }}
+          {{ currentMedia.authors }}<br />
+          <label class="green summary-label">Format:</label>
+          {{ currentMedia.format }}<br />
         </div>
       </div>
     </div>
