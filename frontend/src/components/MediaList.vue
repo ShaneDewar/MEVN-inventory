@@ -63,11 +63,15 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+      this.refresh();
     },
     setFocusMedia(media, index) {
       this.currentMedia = media;
       this.currentIndex = media ? index : -1;
       console.log(this.library, "lib");
+    },
+    refresh() {
+      this.retrieveMedia();
     },
   },
   mounted() {

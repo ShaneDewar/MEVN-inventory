@@ -72,6 +72,10 @@ export default {
       this.currentIndex = media ? index : -1;
       console.log(this.library, "lib");
     },
+
+    refresh() {
+      this.retrieveMedia();
+    },
   },
   mounted() {
     this.retrieveMedia();
