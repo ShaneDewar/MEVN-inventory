@@ -11,6 +11,11 @@ class LibraryService {
   getAll() {
     return http.get(`/media`);
   }
+
+  getAllEbooks() {
+    return http.get(`/?format=ebook`);
+  }
+
   get(id) {
     return http.get(`/media/${id}`);
   }

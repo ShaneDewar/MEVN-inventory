@@ -54,6 +54,24 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findAllOfFormat = (req, res) => {
+  const requestFormat = req.params.format;
+
+  var condition = "format : " + requestFormat;
+
+  Media.find(condition)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          `An error occurred while retrieving all ${requestFormat}.`,
+      });
+    });
+};
+
 // Fiind a specific media by id
 exports.findById = (req, res) => {
   const id = req.params.id;

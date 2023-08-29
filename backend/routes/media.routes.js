@@ -9,6 +9,9 @@ module.exports = (routes) => {
   // Find all Media
   router.get("/media", media.findAll);
 
+  // Find all Media
+  router.get("/:format", media.findAllOfFormat);
+
   // Find One by ID
   router.get("/media/:id", media.findById);
 

@@ -1,7 +1,7 @@
 <template>
   <div class="list-grid">
     <div class="list">
-      <h2>Media in Library:</h2>
+      <h2>eBooks in Library:</h2>
       Click title to select.
       <ul class="list-items">
         <li
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     retrieveMedia() {
-      LibraryService.getAll()
+      LibraryService.getAllEbooks()
         .then((response) => {
           this.library = response.data;
           console.log(response.data);
@@ -55,6 +55,7 @@ export default {
           console.log(x);
         });
     },
+
     deleteMedia() {
       LibraryService.delete(this.currentMedia.id)
         .then((response) => {
@@ -64,6 +65,7 @@ export default {
           console.log(e);
         });
     },
+
     setFocusMedia(media, index) {
       this.currentMedia = media;
       this.currentIndex = media ? index : -1;
