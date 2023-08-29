@@ -12,8 +12,8 @@ class LibraryService {
     return http.get(`/media`);
   }
 
-  getAllEbooks() {
-    return http.get(`/?format=ebook`);
+  getAllEbooks(format) {
+    return http.get(`/${format}`);
   }
 
   get(id) {

@@ -41,11 +41,12 @@ export default {
       library: [],
       currentMedia: null,
       currentIndex: -1,
+      format: "eBook",
     };
   },
   methods: {
     retrieveMedia() {
-      LibraryService.getAllEbooks()
+      LibraryService.getAllEbooks(this.format)
         .then((response) => {
           this.library = response.data;
           console.log(response.data);

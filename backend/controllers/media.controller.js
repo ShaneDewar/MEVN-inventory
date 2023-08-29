@@ -1,3 +1,4 @@
+const { request } = require("express");
 const db = require("../models/database.js");
 const Media = db.media;
 
@@ -43,6 +44,7 @@ exports.findAll = (req, res) => {
     ? { title: { $regex: new RegExp(title), $options: "i" } }
     : {};
 
+  console.log(`finding all ${condition}`);
   Media.find(condition)
     .then((data) => {
       res.send(data);
@@ -56,8 +58,11 @@ exports.findAll = (req, res) => {
 
 exports.findAllOfFormat = (req, res) => {
   const requestFormat = req.params.format;
+  console.log(`finding all ${requestFormat}`);
 
-  var condition = "format : " + requestFormat;
+  var condition = requestFormat
+    ? { format: { $regex: new RegExp(requestFormat), $options: "i" } }
+    : {};
 
   Media.find(condition)
     .then((data) => {
