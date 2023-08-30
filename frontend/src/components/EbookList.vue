@@ -28,11 +28,19 @@
         <button class="delete" @click="deleteMedia">Delete this media</button>
       </div>
     </div>
+    <div v-if="currentMedia">
+      <ListItem
+        title="ImaProp!"
+        :authors="this.currentMedia.authors"
+        :id="this.currentMedia.id"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import LibraryService from "../frontend-services/LibraryService.js";
+import ListItem from "./ListItem.vue";
 
 export default {
   name: "MediaList",
@@ -56,7 +64,6 @@ export default {
           console.log(x);
         });
     },
-
     deleteMedia() {
       LibraryService.delete(this.currentMedia.id)
         .then((response) => {
@@ -67,13 +74,11 @@ export default {
         });
       this.refresh();
     },
-
     setFocusMedia(media, index) {
       this.currentMedia = media;
       this.currentIndex = media ? index : -1;
       console.log(this.library, "lib");
     },
-
     refresh() {
       this.retrieveMedia();
     },
@@ -81,6 +86,7 @@ export default {
   mounted() {
     this.retrieveMedia();
   },
+  components: { ListItem },
 };
 </script>
 

@@ -161,6 +161,8 @@
               type="checkbox"
               id="media_have_used"
               v-model="media.have_used"
+              true-value="Yes, I have!"
+              false-value="Not yet"
               name="media_have_used"
             />
             <label for="media_have_used" id="checkbox">{{
