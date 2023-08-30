@@ -68,18 +68,20 @@ export default {
       LibraryService.delete(this.currentMedia.id)
         .then((response) => {
           console.log(response.data);
+          this.refresh();
         })
         .catch((e) => {
           console.log(e);
         });
-      this.refresh();
     },
     setFocusMedia(media, index) {
-      this.currentMedia = media;
+      this.currentMedia = media ? media : null;
       this.currentIndex = media ? index : -1;
       console.log(this.library, "lib");
     },
     refresh() {
+      this.currentMedia = null;
+      this.currentIndex = -1;
       this.retrieveMedia();
     },
   },
