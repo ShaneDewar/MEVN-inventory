@@ -12,7 +12,7 @@ class LibraryService {
     return http.get(`/media`);
   }
 
-  getAllEbooks(format) {
+  getAllOfFormat(format) {
     return http.get(`/${format}`);
   }
 

@@ -4,7 +4,7 @@
     <router-link to="/media">Library Collection List</router-link>
     <router-link to="/media">Paper Books List</router-link>
     <router-link to="/ebooks">eBooks Collection List</router-link>
-    <router-link to="/media">Audio Book Collection</router-link>
+    <router-link to="/audiobooks">Audio Book Collection</router-link>
     <router-link to="/media">Digital Music Collection</router-link>
     <router-link to="/create">Add Media to Collection</router-link>
   </div>

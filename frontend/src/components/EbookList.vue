@@ -1,7 +1,7 @@
 <template>
   <div class="list-grid">
     <div class="list">
-      <h2>eBooks in Library:</h2>
+      <h2>{{ format + "s" }} in Library:</h2>
       Click title to select.
       <ul class="list-items">
         <li
@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     retrieveMedia() {
-      LibraryService.getAllEbooks(this.format)
+      LibraryService.getAllOfFormat(this.format)
         .then((response) => {
           this.library = response.data;
           console.log(response.data);
