@@ -65,6 +65,7 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+      this.refresh();
     },
 
     setFocusMedia(media, index) {

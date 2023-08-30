@@ -153,15 +153,19 @@
           </div>
 
           <div>
-            <label for="media_have_used"
-              >Check if you've read or listened to this media:
-            </label>
+            <span id="check_label">
+              Check if you've read or listened to this media:
+            </span>
+
             <input
               type="checkbox"
               id="media_have_used"
               v-model="media.have_used"
               name="media_have_used"
             />
+            <label for="media_have_used" id="checkbox">{{
+              media.have_used
+            }}</label>
           </div>
 
           <div>
@@ -347,5 +351,13 @@ export default {
 
 .btn {
   margin-top: 2rem;
+}
+
+#check_label {
+  margin-right: 0.5rem;
+}
+
+#checkbox {
+  margin-left: 0.5rem;
 }
 </style>
