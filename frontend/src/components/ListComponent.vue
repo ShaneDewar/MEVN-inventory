@@ -85,8 +85,17 @@ export default {
     this.requested_format = this.$route.params.format;
     this.format = this.requested_format ? this.requested_format : "";
   },
+  created() {
+    this.$watch(
+      () => this.$route.params.format,
+      (toParams, prvParams) => {
+        console.log(this.requested_format);
+        this.format = this.$route.params.format;
+        this.retrieveMedia();
+      },
+    );
+  },
   mounted() {
-    console.log(this.requested_format);
     this.retrieveMedia();
   },
 };
