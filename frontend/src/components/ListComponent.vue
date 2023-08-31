@@ -28,20 +28,12 @@
         <button class="delete" @click="deleteMedia">Delete this media</button>
       </div>
     </div>
-    <div v-if="currentMedia">
-      <ListItem
-        title="ImaProp!"
-        :authors="this.currentMedia.authors"
-        :id="this.currentMedia.id"
-      />
-    </div>
   </div>
 </template>
 
 <script>
 import { provide } from "vue";
 import LibraryService from "../frontend-services/LibraryService.js";
-import ListItem from "./ListItem.vue";
 
 export default {
   setup() {
@@ -53,7 +45,7 @@ export default {
       library: [],
       currentMedia: null,
       currentIndex: -1,
-      format: "eBook",
+      format: "",
     };
   },
   methods: {
@@ -91,13 +83,12 @@ export default {
   },
   beforeMount() {
     this.requested_format = this.$route.params.format;
-    this.format = this.requested_format;
+    this.format = this.requested_format ? this.requested_format : "";
   },
   mounted() {
     console.log(this.requested_format);
     this.retrieveMedia();
   },
-  components: { ListItem },
 };
 </script>
 

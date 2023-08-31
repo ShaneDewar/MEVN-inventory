@@ -1,11 +1,11 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
-    <router-link to="/media">Library Collection List</router-link>
-    <router-link to="/ebooks/hardcover">Paper Books List</router-link>
-    <router-link to="/ebooks">eBooks Collection List</router-link>
-    <router-link to="/audiobooks">Audio Book Collection</router-link>
-    <router-link to="/media">Digital Music Collection</router-link>
+    <router-link to="/library">Library Collection List</router-link>
+    <router-link to="/library/Hardcover">Hardcover Books List</router-link>
+    <router-link to="/library/eBook">eBooks Collection List</router-link>
+    <router-link to="/library/Audiobook">Audio Book Collection</router-link>
+    <router-link to="/library/Digital">Digital Music Collection</router-link>
     <router-link to="/create">Add Media to Collection</router-link>
   </div>
 
