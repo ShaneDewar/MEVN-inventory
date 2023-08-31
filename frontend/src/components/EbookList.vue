@@ -39,10 +39,14 @@
 </template>
 
 <script>
+import { provide } from "vue";
 import LibraryService from "../frontend-services/LibraryService.js";
 import ListItem from "./ListItem.vue";
 
 export default {
+  setup() {
+    provide("requested_format", "");
+  },
   name: "MediaList",
   data() {
     return {
@@ -85,7 +89,12 @@ export default {
       this.retrieveMedia();
     },
   },
+  beforeMount() {
+    this.requested_format = this.$route.params.format;
+    this.format = this.requested_format;
+  },
   mounted() {
+    console.log(this.requested_format);
     this.retrieveMedia();
   },
   components: { ListItem },

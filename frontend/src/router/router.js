@@ -10,6 +10,7 @@ const routes = [
   { path: "/", alias: "/media", name: "Media List", component: MediaList },
   { path: "/ebooks", name: "eBooks List", component: EbookList },
   { path: "/audiobooks", name: "Audio Books List", component: AudioBookList },
+  { path: "/ebooks/:format", name: "Hard Cover List", component: EbookList },
   { path: "/media/:id", name: "Media", component: Media },
   { path: "/create", name: "create", component: AddMedia },
 ];
