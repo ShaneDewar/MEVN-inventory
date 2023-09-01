@@ -325,7 +325,7 @@ export default {
           format: this.media.format,
           publish_date: this.media.publish_date,
           genres: this.splitAndTrimWS(this.media.genres),
-          have_used: this.media.have_used,
+          have_used: this.media.have_used == "Yes, I have!" ? true : false,
           date_last_used: this.media.date_last_used,
           keywords: this.splitAndTrimWS(this.media.keywords),
           languages: this.splitAndTrimWS(this.media.languages),
