@@ -17,8 +17,20 @@ a,
   transition: 0.4s;
 }
 
+#list-item {
+  ul:hover {
+    background-color: rgb(17, 77, 2);
+  }
+  il:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
 @media (hover: hover) {
   a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+  il:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }

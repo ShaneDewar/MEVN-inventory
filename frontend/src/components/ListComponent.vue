@@ -4,9 +4,10 @@
       <h2>
         {{ format == "All" ? "All Media" : format + "s" }} in your Library:
       </h2>
-      Click title to select.
+      Click title for more details.
       <ul class="list-items">
         <li
+          id="list-item"
           :class="{ active: index == currentIndex }"
           v-for="(media, index) in library"
           :key="index"
@@ -151,7 +152,14 @@ export default {
   color: rgb(70, 72, 185);
 }
 
+#list-item:hover {
+  color: rgb(19, 22, 180);
+}
 .summary {
   grid-column: 3;
+}
+
+.delete {
+  margin-top: 2rem;
 }
 </style>
