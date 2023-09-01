@@ -6,6 +6,9 @@ module.exports = (routes) => {
   // Create Media
   router.post("/create", media.create);
 
+  // Search Media
+  router.get("/search/:search_value", media.search);
+
   // Find all Media
   router.get("/media", media.findAll);
 

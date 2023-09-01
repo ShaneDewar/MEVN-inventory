@@ -9,7 +9,7 @@ export default {
   },
   methods: {
     SearchLibrary() {
-      LibraryService.search(search_value)
+      LibraryService.search(this.search_value)
         .then((response) => {
           this.res = response.data;
           console.log(response.data);

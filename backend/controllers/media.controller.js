@@ -77,7 +77,28 @@ exports.findAllOfFormat = (req, res) => {
     });
 };
 
-// Fiind a specific media by id
+exports.search = (req, res) => {
+  const searchValue = req.params.search_value;
+  console.log(`searching for ${searchValue}`);
+
+  const condition = {
+    text: { search: searchValue },
+  };
+
+  Media.find(condition)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          `An error occurred while searching for ${searchValue}.`,
+      });
+    });
+};
+
+// Find a specific media by id
 exports.findById = (req, res) => {
   const id = req.params.id;
 
