@@ -1,7 +1,9 @@
 <template>
   <div class="list-grid">
     <div class="list">
-      <h2>{{ format + "s" }} in Library:</h2>
+      <h2>
+        {{ format == "All" ? "All Media" : format + "s" }} in your Library:
+      </h2>
       Click title to select.
       <ul class="list-items">
         <li
@@ -72,15 +74,27 @@ export default {
   },
   methods: {
     retrieveMedia() {
-      LibraryService.getAllOfFormat(this.format)
-        .then((response) => {
-          this.library = response.data;
-          console.log(response.data);
-          this.setFocusMedia(this.library[0], 0);
-        })
-        .catch((x) => {
-          console.log(x);
-        });
+      if (this.format == "All") {
+        LibraryService.getAll()
+          .then((response) => {
+            this.library = response.data;
+            console.log(response.data);
+            this.setFocusMedia(this.library[0], 0);
+          })
+          .catch((x) => {
+            console.log(x);
+          });
+      } else {
+        LibraryService.getAllOfFormat(this.format)
+          .then((response) => {
+            this.library = response.data;
+            console.log(response.data);
+            this.setFocusMedia(this.library[0], 0);
+          })
+          .catch((x) => {
+            console.log(x);
+          });
+      }
     },
     deleteMedia() {
       LibraryService.delete(this.currentMedia.id)

@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
-    <router-link to="/library">Library Collection List</router-link>
+    <router-link to="/library/All">Library Collection List</router-link>
     <router-link to="/library/Hardcover">Hardcover Books List</router-link>
     <router-link to="/library/eBook">eBooks Collection List</router-link>
     <router-link to="/library/Audiobook">Audio Book Collection</router-link>
