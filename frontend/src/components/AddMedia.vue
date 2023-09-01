@@ -284,6 +284,7 @@ export default {
     };
   },
   methods: {
+    // Used to autopopulated the added date field by generating today's date in YYYY-MM-DD format
     getTodayDate() {
       let today = new Date();
       console.log(today);
@@ -291,6 +292,7 @@ export default {
         .toString()
         .padStart(2, "0")}-${today.getDate()}`;
     },
+    // Confirms a minimal amount of required data was added for the entry before submission to the server.
     validateRequired() {
       this.errors.title =
         this.media.title.length >= 1 ? "" : "Title is required.";
@@ -301,11 +303,14 @@ export default {
       this.errors.format =
         this.media.format.length >= 1 ? "" : "A format is required.";
     },
+    // Convert strings to arrays and remove whitespace
     splitAndTrimWS(x) {
       let items = x.split(",");
       let trimmedItems = [];
-      for (const i of items) {
-        trimmedItems.push(i.trim());
+      if (items.length > 0) {
+        for (const i of items) {
+          trimmedItems.push(i.trim());
+        }
       }
       return trimmedItems;
     },
@@ -318,6 +323,15 @@ export default {
           authors: authorsArray,
           date_added: this.media.date_added,
           format: this.media.format,
+          publish_date: this.media.publish_date,
+          genres: this.splitAndTrimWS(this.media.genres),
+          have_used: this.media.have_used,
+          date_last_used: this.media.date_last_used,
+          keywords: this.splitAndTrimWS(this.media.keywords),
+          languages: this.splitAndTrimWS(this.media.languages),
+          isbn: this.media.isbn,
+          size: this.media.size,
+          notes: this.splitAndTrimWS(this.media.notes),
         };
         console.log(data);
 
