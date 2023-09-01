@@ -5,7 +5,7 @@ import ListComponent from "@/components/ListComponent.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-  { path: "/", alias: "/library", name: "Library", component: MediaList },
+  // { path: "/", name: "Landing Page", component: MediaList },
   {
     path: "/library/:format",
     name: "Audio Books List",
