@@ -2,10 +2,11 @@
   <div id="nav">
     <router-link to="/">Home</router-link>
     <router-link to="/library/All">Library Collection List</router-link>
-    <router-link to="/library/Hardcover">Hardcover Books List</router-link>
-    <router-link to="/library/eBook">eBooks Collection List</router-link>
-    <router-link to="/library/Audiobook">Audio Book Collection</router-link>
-    <router-link to="/library/Digital">Digital Music Collection</router-link>
+    <router-link to="/library/Hardcover">Hardcovers</router-link>
+    <router-link to="/library/Softcover">Softcovers</router-link>
+    <router-link to="/library/eBook">eBooks</router-link>
+    <router-link to="/library/Audiobook">Audio Books</router-link>
+    <router-link to="/library/Digital">Digital Music</router-link>
     <router-link to="/create">Add Media to Collection</router-link>
   </div>
 

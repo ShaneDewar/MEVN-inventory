@@ -98,12 +98,12 @@
                 <input
                   type="radio"
                   id="media_format_digital_music"
-                  value="Digital music"
+                  value="Audio file"
                   v-model="media.format"
                   name="media_format"
                 />
                 <label for="media_format_digital_music" style="margin-left: 5px"
-                  >Digital music</label
+                  >Digital music or audio file</label
                 >
               </li>
               <li>

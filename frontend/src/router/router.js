@@ -8,7 +8,7 @@ const routes = [
   // { path: "/", name: "Landing Page", component: MediaList },
   {
     path: "/library/:format",
-    name: "Audio Books List",
+    name: "Media List",
     component: ListComponent,
   },
   { path: "/create", name: "create", component: AddMedia },
