@@ -8,6 +8,7 @@
     <router-link to="/library/Audiobook">Audio Books</router-link>
     <router-link to="/library/Digital">Digital Music</router-link>
     <router-link to="/create">Add Media to Collection</router-link>
+    <router-link to="/search">Search your Library</router-link>
   </div>
 
   <div class="container">

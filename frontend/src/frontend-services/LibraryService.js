@@ -20,6 +20,10 @@ class LibraryService {
     return http.get(`/media/${id}`);
   }
 
+  search(search_value) {
+    return http.get(`/search/${search_value}`);
+  }
+
   create(data) {
     return http.post("/create", data);
   }
