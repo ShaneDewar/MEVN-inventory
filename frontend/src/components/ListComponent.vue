@@ -24,6 +24,28 @@
           {{ currentMedia.authors }}<br />
           <label class="green summary-label">Format:</label>
           {{ currentMedia.format }}<br />
+          <label class="green summary-label">Added to Library on:</label>
+          {{ currentMedia.date_added }}<br />
+          <label class="green summary-label">Genres:</label>
+          {{ currentMedia.genres }}<br />
+          <label class="green summary-label">Have read/used:</label>
+          {{ currentMedia.have_used }}<br />
+          <label class="green summary-label">Last used date:</label>
+          {{ currentMedia.date_last_used }}<br />
+          <label class="green summary-label">Published on:</label>
+          {{ currentMedia.publish_date }}<br />
+          <label class="green summary-label">Keywords:</label>
+          {{ currentMedia.keywords }}<br />
+          <label class="green summary-label">Languages:</label>
+          {{ currentMedia.languages }}<br />
+          <label class="green summary-label">ISBN:</label>
+          {{ currentMedia.isbn }}<br />
+          <label class="green summary-label">Size of media:</label>
+          {{ currentMedia.size }}<br />
+          <label class="green summary-label">Notes:</label>
+          {{ currentMedia.notes }}<br />
+          <label class="green summary-label">ID:</label>
+          {{ currentMedia.id }}<br />
         </div>
         <button class="delete" @click="deleteMedia">Delete this media</button>
       </div>
