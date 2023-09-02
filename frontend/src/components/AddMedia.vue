@@ -130,18 +130,6 @@
           </div>
 
           <div>
-            <label for="media_date_added">Date added: </label>
-            <input
-              type="date"
-              id="media_date_added"
-              required
-              v-model="media.date_added"
-              placeholder="media.date_added"
-              name="media_date_added"
-            />
-          </div>
-
-          <div>
             <label for="media_genres">Genres*: </label>
             <input
               type="text"
@@ -305,17 +293,23 @@ export default {
     },
     // Convert strings to arrays and remove whitespace
     splitAndTrimWS(x) {
-      let items = x.split(",");
-      let trimmedItems = [];
-      if (items.length > 0) {
-        for (const i of items) {
-          trimmedItems.push(i.trim());
+      if (x.length < 2) {
+        return x;
+      } else {
+        let items = x.split(",");
+
+        let trimmedItems = [];
+        if (items.length > 0) {
+          for (const i of items) {
+            trimmedItems.push(i.trim());
+          }
         }
+        return trimmedItems;
       }
-      return trimmedItems;
     },
     addMedia() {
       this.validateRequired();
+      console.log(this);
       if (!this.errors.title && !this.errors.authors && !this.errors.format) {
         let authorsArray = this.splitAndTrimWS(this.media.authors);
         let data = {
@@ -324,14 +318,24 @@ export default {
           date_added: this.media.date_added,
           format: this.media.format,
           publish_date: this.media.publish_date,
-          genres: this.splitAndTrimWS(this.media.genres),
+          genres:
+            this.media.genres != []
+              ? this.splitAndTrimWS(this.media.genres)
+              : [],
           have_used: this.media.have_used == "Yes, I have!" ? true : false,
           date_last_used: this.media.date_last_used,
-          keywords: this.splitAndTrimWS(this.media.keywords),
-          languages: this.splitAndTrimWS(this.media.languages),
+          keywords:
+            this.media.keywords != []
+              ? this.splitAndTrimWS(this.media.keywords)
+              : [],
+          languages:
+            this.media.languages != []
+              ? this.splitAndTrimWS(this.media.languages)
+              : [],
           isbn: this.media.isbn,
           size: this.media.size,
-          notes: this.splitAndTrimWS(this.media.notes),
+          notes:
+            this.media.notes != [] ? this.splitAndTrimWS(this.media.notes) : [],
         };
         console.log(data);
 
@@ -351,6 +355,7 @@ export default {
     createAnother() {
       this.submitted = false;
       this.media = {};
+      this.media.date_added = this.getTodayDate();
     },
   },
   beforeMount() {
