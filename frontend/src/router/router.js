@@ -1,12 +1,12 @@
 import AddMedia from "@/components/AddMedia.vue";
-import MediaList from "@/components/MediaList.vue";
+import LandingPage from "@/components/LandingPage.vue";
 import ListComponent from "@/components/ListComponent.vue";
 import SearchLibrary from "@/components/SearchLibrary.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-  // { path: "/", name: "Landing Page", component: MediaList },
+  { path: "/", name: "Landing Page", component: LandingPage },
   {
     path: "/library/:format",
     name: "Media List",
