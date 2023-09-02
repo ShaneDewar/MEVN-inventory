@@ -64,6 +64,7 @@ exports.findAllOfFormat = (req, res) => {
     ? { format: { $regex: new RegExp(requestFormat), $options: "i" } }
     : {};
 
+  console.log(`finding all ${condition}`);
   Media.find(condition)
     .then((data) => {
       res.send(data);
@@ -81,9 +82,14 @@ exports.search = (req, res) => {
   const searchValue = req.params.search_value;
   console.log(`searching for ${searchValue}`);
 
-  const condition = {
-    authors: { $elemMatch: { $regex: "^" + searchValue + ".*" } },
-  };
+  let condition = searchValue
+    ? {
+        $text: {
+          $search: searchValue,
+        },
+      }
+    : {};
+
   console.log(condition);
 
   Media.find(condition)
