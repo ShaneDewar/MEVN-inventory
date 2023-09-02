@@ -17,7 +17,6 @@
         </li>
       </ul>
     </div>
-
     <div class="summary">
       <div v-if="currentMedia">
         <div>
