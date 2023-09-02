@@ -82,12 +82,14 @@ exports.search = (req, res) => {
   console.log(`searching for ${searchValue}`);
 
   const condition = {
-    text: { search: searchValue },
+    authors: { $elemMatch: { $regex: "^" + searchValue + ".*" } },
   };
+  console.log(condition);
 
   Media.find(condition)
     .then((data) => {
       res.send(data);
+      console.log("Result" + data);
     })
     .catch((err) => {
       res.status(500).send({
