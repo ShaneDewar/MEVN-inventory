@@ -23,8 +23,8 @@ export default {
 </script>
 
 <template>
-  <form class="search_form">
-    <label>What to search for?</label>
+  <form class="search_form" @submit.prevent="SearchLibrary">
+    <label>Search title, authors and keywords:</label><br />
     <input
       type="text"
       id="search_value"
