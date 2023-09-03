@@ -6,6 +6,8 @@ module.exports = (routes) => {
   // Create Media
   router.post("/create", media.create);
 
+  // Update Media by ID
+  router.put("/:id", media.update);
   // Search Media
   router.get("/search/:search_value", media.search);
 

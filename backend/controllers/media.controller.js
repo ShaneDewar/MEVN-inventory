@@ -36,6 +36,32 @@ exports.create = (req, res) => {
     });
 };
 
+// Update the media with the given ID and submitted data
+exports.update = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Some data is needed to update this Media.",
+    });
+  }
+
+  const id = req.params.id;
+
+  Media.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update Media with id=${id}. Maybe Media was not found!`,
+        });
+      } else
+        res.send({ message: "Media with id=${id} was updated successfully." });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error updating Media with with id=${id}",
+      });
+    });
+};
+
 exports.findAll = (req, res) => {
   const title = req.query.title;
 
