@@ -1,15 +1,37 @@
 <script>
 import LibraryService from "@/frontend-services/LibraryService";
-import UpdateMedia from "./UpdateMedia.vue";
 
 export default {
   data() {
     return {
       search_value: "",
+      media: {
+        id: null,
+        media: "",
+        title: "",
+        authors: [],
+        format: "",
+        publish_date: "",
+        date_added: "",
+        genres: [],
+        have_used: "",
+        date_last_used: "",
+        keywords: [],
+        languages: [],
+        isbn: "",
+        size: "",
+        notes: [],
+      },
+      errors: {
+        title: "",
+        authors: "",
+        format: "",
+      },
       library: [],
-      currentMedia: null,
+      currentMedia: "",
       currentIndex: -1,
       format: "",
+      editing_mode: false,
     };
   },
   methods: {
@@ -42,6 +64,12 @@ export default {
       this.currentMedia = null;
       this.currentIndex = -1;
       this.retrieveMedia();
+    },
+    switchToEditingMode() {
+      this.editing_mode = this.editing_mode ? false : true;
+    },
+    updateMedia() {
+      this.editing_mode = false;
     },
   },
 };
@@ -79,9 +107,239 @@ export default {
         </li>
       </ul>
     </div>
-    <div><button @click="UpdateMedia.updateForm()">Update</button></div>
+
+    <div class="media-update">
+      <div v-if="editing_mode">
+        <div>
+          <br />
+          <form @submit.prevent="updateMedia">
+            <div>
+              <div>
+                <label for="media_title">Title: </label>
+                <input
+                  type="text"
+                  id="media_title"
+                  required
+                  v-model="currentMedia.title"
+                  name="media_title"
+                />
+                <p class="error_message" v-if="errors.title">
+                  {{ errors.title }}
+                </p>
+              </div>
+
+              <div>
+                <label for="media_authors">Authors*: </label>
+                <input
+                  type="text"
+                  id="media_authors"
+                  required
+                  v-model="currentMedia.authors"
+                  name="media_authors"
+                  placeholder="Author 1, Author 2, ..."
+                />
+                <p class="error_message" v-if="errors.authors">
+                  {{ errors.authors }}
+                </p>
+              </div>
+              <div>
+                Format:
+                <p class="error_message" v-if="errors.format">
+                  {{ errors.format }}
+                </p>
+                <ul>
+                  <li>
+                    <input
+                      type="radio"
+                      id="media_format_hardcover"
+                      value="Hardcover"
+                      required
+                      v-model="currentMedia.format"
+                      name="media_format"
+                    />
+                    <label for="media_format_hardcover" style="margin-left: 5px"
+                      >Hardcover</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="media_format_softcover"
+                      value="Softcover"
+                      v-model="currentMedia.format"
+                      name="media_format"
+                    />
+                    <label for="media_format_softcover" style="margin-left: 5px"
+                      >Softcover</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="media_format_ebook"
+                      value="eBook"
+                      v-model="currentMedia.format"
+                      name="media_format"
+                    />
+                    <label for="media_format_ebook" style="margin-left: 5px"
+                      >eBook</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="media_format_audiobook"
+                      value="Audiobook"
+                      v-model="currentMedia.format"
+                      name="media_format"
+                    />
+                    <label for="media_format_audiobook" style="margin-left: 5px"
+                      >Audiobook</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="media_format_digital_music"
+                      value="Audio file"
+                      v-model="currentMedia.format"
+                      name="media_format"
+                    />
+                    <label
+                      for="media_format_digital_music"
+                      style="margin-left: 5px"
+                      >Digital music or audio file</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="media_format_cd"
+                      value="CD"
+                      v-model="currentMedia.format"
+                      name="media_format"
+                    />
+                    <label for="media_format_cd" style="margin-left: 5px"
+                      >CD</label
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <label for="media_publish_date">Publish date: </label>
+                <input
+                  type="date"
+                  id="media_publish_date"
+                  v-model="currentMedia.publish_date"
+                  name="media_publish_date"
+                />
+              </div>
+
+              <div>
+                <label for="media_genres">Genres*: </label>
+                <input
+                  type="text"
+                  id="media_genres"
+                  v-model="currentMedia.genres"
+                  name="media_genres"
+                  placeholder="Genre 1, Genre 2, ..."
+                />
+              </div>
+
+              <div>
+                <span id="check_label">
+                  Check if you've read or listened to this media:
+                </span>
+
+                <input
+                  type="checkbox"
+                  id="media_have_used"
+                  v-model="currentMedia.have_used"
+                  true-value="Yes, I have!"
+                  false-value="Not yet"
+                  name="media_have_used"
+                />
+                <label for="media_have_used" id="checkbox">{{
+                  currentMedia.have_used
+                }}</label>
+              </div>
+
+              <div>
+                <label for="media_date_last_used">If so, when? </label>
+                <input
+                  type="date"
+                  id="media_date_last_used"
+                  v-model="currentMedia.date_last_used"
+                  name="media_date_last_used"
+                />
+              </div>
+
+              <div>
+                <label for="media_keywords">Subjects and Keywords*: </label>
+                <input
+                  type="text"
+                  id="media_keywords"
+                  v-model="currentMedia.keywords"
+                  name="media_keywords"
+                  placeholder="Skiing, Equipment, Switzerland ..."
+                />
+              </div>
+
+              <div>
+                <label for="media_languages">Languages*: </label>
+                <input
+                  type="text"
+                  id="media_languages"
+                  v-model="currentMedia.languages"
+                  name="media_languages"
+                  placeholder="PHP, French, Morse..."
+                />
+              </div>
+
+              <div>
+                <label for="media_isbn">ISBN: </label>
+                <input
+                  type="text"
+                  id="media_isbn"
+                  v-model="currentMedia.isbn"
+                  name="media_isbn"
+                />
+              </div>
+
+              <div>
+                <label for="media_size">Size (any format): </label>
+                <input
+                  type="text"
+                  id="media_size"
+                  v-model="currentMedia.size"
+                  name="media_size"
+                />
+              </div>
+
+              <div>
+                <label for="media_notes">Notes*: </label>
+                <input
+                  type="text"
+                  id="media_notes"
+                  v-model="currentMedia.notes"
+                  name="media_notes"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div>
+          <button type="submit" @click="updateMedia" class="btn submit_success">
+            Update {{ currentMedia.title }} in your library.
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="summary">
       <div v-if="currentMedia">
+        <h1>{{ currentMedia.title }}</h1>
         <div>
           <label class="green summary-label">Title:</label>
           {{ currentMedia.title }}<br />
@@ -114,6 +372,7 @@ export default {
         </div>
         <button class="delete" @click="deleteMedia">Delete this media</button>
       </div>
+      <div><button @click="switchToEditingMode">Update</button></div>
     </div>
   </div>
 </template>
@@ -137,6 +396,11 @@ export default {
 }
 .summary {
   grid-column: 3;
+}
+
+.media-update {
+  grid-column: 2;
+  margin-right: 0.5rem;
 }
 
 .delete {
