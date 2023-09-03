@@ -371,8 +371,8 @@ export default {
           {{ currentMedia.id }}<br />
         </div>
         <button class="delete" @click="deleteMedia">Delete this media</button>
+        <div><button @click="switchToEditingMode">Update</button></div>
       </div>
-      <div><button @click="switchToEditingMode">Update</button></div>
     </div>
   </div>
 </template>
