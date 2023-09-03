@@ -12,6 +12,10 @@ class LibraryService {
     return http.get(`/media`);
   }
 
+  update(id, data) {
+    return http.put(`/${id}`, data);
+  }
+
   getAllOfFormat(format) {
     return http.get(`/${format}`);
   }

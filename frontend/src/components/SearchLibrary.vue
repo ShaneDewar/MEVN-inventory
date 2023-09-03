@@ -32,6 +32,7 @@ export default {
       currentIndex: -1,
       format: "",
       editing_mode: false,
+      update_success: false,
     };
   },
   methods: {
@@ -87,15 +88,16 @@ export default {
         };
         console.log(data);
 
-        // LibraryService.update(this.currentMedia.id, data)
-        //   .then((response) => {
-        //     this.currentMedia.id = response.data.id;
-        //     console.log(response.data);
-        //     this.submitted = true;
-        //   })
-        //   .catch((x) => {
-        //     console.log(x);
-        //   });
+        LibraryService.update(this.currentMedia.id, data)
+          .then((response) => {
+            this.currentMedia.id = response.data.id;
+            console.log(response.data);
+            this.update_success = true;
+            this.editing_mode = false;
+          })
+          .catch((x) => {
+            console.log(x);
+          });
       } else {
         console.log(this.errors);
       }
@@ -139,6 +141,7 @@ export default {
     },
     switchToEditingMode() {
       this.editing_mode = this.editing_mode ? false : true;
+      this.update_success = false;
     },
   },
 };
@@ -408,7 +411,11 @@ export default {
 
     <div class="summary">
       <div v-if="currentMedia">
+        <div v-if="this.update_success">
+          <h2>{{ currentMedia.title }} updated successfully.</h2>
+        </div>
         <h1>{{ currentMedia.title }}</h1>
+        <div><button @click="switchToEditingMode">Update</button></div>
         <div>
           <label class="green summary-label">Title:</label>
           {{ currentMedia.title }}<br />
@@ -440,7 +447,6 @@ export default {
           {{ currentMedia.id }}<br />
         </div>
         <button class="delete" @click="deleteMedia">Delete this media</button>
-        <div><button @click="switchToEditingMode">Update</button></div>
       </div>
     </div>
   </div>
