@@ -56,6 +56,78 @@ export default {
           console.log(e);
         });
     },
+    updateMedia() {
+      this.validateRequired();
+      console.log(this);
+      if (!this.errors.title && !this.errors.authors && !this.errors.format) {
+        let data = {
+          title: this.currentMedia.title,
+          authors: this.splitAndTrimWS(this.currentMedia.authors),
+          date_added: this.currentMedia.date_added,
+          format: this.currentMedia.format,
+          publish_date: this.currentMedia.publish_date,
+          genres: this.splitAndTrimWS(this.currentMedia.genres),
+          have_used:
+            this.currentMedia.have_used == "Yes, I have!" ? true : false,
+          date_last_used: this.currentMedia.date_last_used,
+          keywords:
+            this.currentMedia.keywords != []
+              ? this.splitAndTrimWS(this.currentMedia.keywords)
+              : [],
+          languages:
+            this.currentMedia.languages != []
+              ? this.splitAndTrimWS(this.currentMedia.languages)
+              : [],
+          isbn: this.currentMedia.isbn,
+          size: this.currentMedia.size,
+          notes:
+            this.currentMedia.notes != []
+              ? this.splitAndTrimWS(this.currentMedia.notes)
+              : [],
+        };
+        console.log(data);
+
+        // LibraryService.update(this.currentMedia.id, data)
+        //   .then((response) => {
+        //     this.currentMedia.id = response.data.id;
+        //     console.log(response.data);
+        //     this.submitted = true;
+        //   })
+        //   .catch((x) => {
+        //     console.log(x);
+        //   });
+      } else {
+        console.log(this.errors);
+      }
+    },
+    // Confirms a minimal amount of required data was added for the entry before submission to the server.
+    validateRequired() {
+      this.errors.title =
+        this.currentMedia.title.length >= 1 ? "" : "Title is required.";
+      this.errors.authors =
+        this.currentMedia.authors.length >= 1
+          ? ""
+          : "At least one author is required.";
+      this.errors.format =
+        this.currentMedia.format.length >= 1 ? "" : "A format is required.";
+    },
+    // Convert strings to arrays and remove whitespace
+    splitAndTrimWS(x) {
+      console.log(x);
+      if (Array.isArray(x)) {
+        return x;
+      } else {
+        let items = x.split(",");
+
+        let trimmedItems = [];
+        if (items.length > 0) {
+          for (const i of items) {
+            trimmedItems.push(i.trim());
+          }
+        }
+        return trimmedItems;
+      }
+    },
     setFocusMedia(media, index) {
       this.currentMedia = media ? media : null;
       this.currentIndex = media ? index : -1;
@@ -67,9 +139,6 @@ export default {
     },
     switchToEditingMode() {
       this.editing_mode = this.editing_mode ? false : true;
-    },
-    updateMedia() {
-      this.editing_mode = false;
     },
   },
 };

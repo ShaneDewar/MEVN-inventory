@@ -293,7 +293,7 @@ export default {
     },
     // Convert strings to arrays and remove whitespace
     splitAndTrimWS(x) {
-      if (x.length < 2) {
+      if (Array.isArray(x)) {
         return x;
       } else {
         let items = x.split(",");
