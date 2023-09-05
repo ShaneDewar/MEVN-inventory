@@ -150,6 +150,7 @@ export default {
         .then((response) => {
           this.library[0] = response.data;
           console.log(response.data);
+          this.currentMedia = this.library[0];
           this.setFocusMedia(this.library[0], 0);
           this.editing_mode = true;
           this.update_success = false;

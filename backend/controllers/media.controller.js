@@ -53,11 +53,11 @@ exports.update = (req, res) => {
           message: `Cannot update Media with id=${id}. Maybe Media was not found!`,
         });
       } else
-        res.send({ message: "Media with id=${id} was updated successfully." });
+        res.send({ message: `Media with id=${id} was updated successfully.` });
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Media with with id=${id}",
+        message: `Error updating Media with with id=${id}`,
       });
     });
 };
