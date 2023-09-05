@@ -18,6 +18,7 @@
       </ul>
     </div>
     <div class="summary">
+      <button class="update" @click="redirectUpdate">Update this Media</button>
       <div v-if="currentMedia">
         <div>
           <label class="green summary-label">Title:</label>
@@ -94,6 +95,16 @@ export default {
           .catch((x) => {
             console.log(x);
           });
+      }
+    },
+    redirectUpdate() {
+      if (this.currentMedia) {
+        this.$router.push({
+          name: "searchID",
+          params: { id: this.currentMedia.id },
+        });
+      } else {
+        console.log("Must select a media to update first.");
       }
     },
     deleteMedia() {

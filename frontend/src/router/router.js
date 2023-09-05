@@ -14,6 +14,7 @@ const routes = [
   },
   { path: "/create", name: "create", component: AddMedia },
   { path: "/search", name: "search", component: SearchLibrary },
+  { path: "/search/:id", name: "searchID", component: SearchLibrary },
 ];
 
 const router = createRouter({

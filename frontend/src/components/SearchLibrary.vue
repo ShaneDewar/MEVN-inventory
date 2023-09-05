@@ -144,6 +144,9 @@ export default {
       this.update_success = false;
     },
   },
+  beforeMount() {
+    console.log("beforemount");
+  },
 };
 </script>
 
