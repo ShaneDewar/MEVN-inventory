@@ -145,7 +145,20 @@ export default {
     },
   },
   beforeMount() {
-    console.log("beforemount");
+    if (this.$route.params.id) {
+      LibraryService.get(this.$route.params.id)
+        .then((response) => {
+          this.library[0] = response.data;
+          console.log(response.data);
+          this.setFocusMedia(this.library[0], 0);
+          this.editing_mode = true;
+          this.update_success = false;
+        })
+        .catch((x) => {
+          console.log(x);
+        });
+      this.$route.params.id = "";
+    }
   },
 };
 </script>
