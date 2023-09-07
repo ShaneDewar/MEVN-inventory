@@ -1,3 +1,129 @@
+<script>
+import LibraryService from "@/frontend-services/LibraryService.js";
+
+export default {
+  name: "create-media",
+  data() {
+    return {
+      media: {
+        id: null,
+        media: "",
+        title: "",
+        authors: [],
+        format: "",
+        publish_date: "",
+        date_added: "",
+        genres: [],
+        have_used: "",
+        date_last_used: "",
+        keywords: [],
+        languages: [],
+        isbn: "",
+        size: "",
+        notes: [],
+      },
+      errors: {
+        title: "",
+        authors: "",
+        format: "",
+      },
+      submitted: false,
+    };
+  },
+  methods: {
+    // Used to autopopulated the added date field by generating today's date in YYYY-MM-DD format
+    getTodayDate() {
+      let today = new Date();
+      console.log(today);
+      return `${today.getFullYear()}-${(today.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}-${today.getDate()}`;
+    },
+    // Confirms a minimal amount of required data was added for the entry before submission to the server.
+    validateRequired() {
+      this.errors.title =
+        this.media.title.length >= 1 ? "" : "Title is required.";
+      this.errors.authors =
+        this.media.authors.length >= 1
+          ? ""
+          : "At least one author is required.";
+      this.errors.format =
+        this.media.format.length >= 1 ? "" : "A format is required.";
+    },
+    // Convert strings to arrays and remove whitespace
+    splitAndTrimWS(x) {
+      if (Array.isArray(x)) {
+        return x;
+      } else {
+        let items = x.split(",");
+
+        let trimmedItems = [];
+        if (items.length > 0) {
+          for (const i of items) {
+            trimmedItems.push(i.trim());
+          }
+        }
+        return trimmedItems;
+      }
+    },
+    addMedia() {
+      this.validateRequired();
+      console.log(this);
+      if (!this.errors.title && !this.errors.authors && !this.errors.format) {
+        let authorsArray = this.splitAndTrimWS(this.media.authors);
+        let data = {
+          title: this.media.title,
+          authors: authorsArray,
+          date_added: this.media.date_added,
+          format: this.media.format,
+          publish_date: this.media.publish_date,
+          genres:
+            this.media.genres != []
+              ? this.splitAndTrimWS(this.media.genres)
+              : [],
+          have_used: this.media.have_used == "Yes, I have!" ? true : false,
+          date_last_used: this.media.date_last_used,
+          keywords:
+            this.media.keywords != []
+              ? this.splitAndTrimWS(this.media.keywords)
+              : [],
+          languages:
+            this.media.languages != []
+              ? this.splitAndTrimWS(this.media.languages)
+              : [],
+          isbn: this.media.isbn,
+          size: this.media.size,
+          notes:
+            this.media.notes != [] ? this.splitAndTrimWS(this.media.notes) : [],
+        };
+        console.log(data);
+
+        LibraryService.create(data)
+          .then((response) => {
+            this.media.id = response.data.id;
+            console.log(response.data);
+            this.submitted = true;
+          })
+          .catch((x) => {
+            console.log(x);
+          });
+      } else {
+        console.log(this.errors);
+      }
+    },
+    createAnother() {
+      this.submitted = false;
+      this.media = {};
+      this.media.date_added = this.getTodayDate();
+    },
+  },
+  beforeMount() {
+    this.media.date_added = this.getTodayDate();
+    console.log(this.media.date_added);
+  },
+};
+</script>
+
 <template>
   <div class="media">
     <h1>{{ media.title }}</h1>
@@ -238,132 +364,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import LibraryService from "@/frontend-services/LibraryService.js";
-
-export default {
-  name: "create-media",
-  data() {
-    return {
-      media: {
-        id: null,
-        media: "",
-        title: "",
-        authors: [],
-        format: "",
-        publish_date: "",
-        date_added: "",
-        genres: [],
-        have_used: "",
-        date_last_used: "",
-        keywords: [],
-        languages: [],
-        isbn: "",
-        size: "",
-        notes: [],
-      },
-      errors: {
-        title: "",
-        authors: "",
-        format: "",
-      },
-      submitted: false,
-    };
-  },
-  methods: {
-    // Used to autopopulated the added date field by generating today's date in YYYY-MM-DD format
-    getTodayDate() {
-      let today = new Date();
-      console.log(today);
-      return `${today.getFullYear()}-${(today.getMonth() + 1)
-        .toString()
-        .padStart(2, "0")}-${today.getDate()}`;
-    },
-    // Confirms a minimal amount of required data was added for the entry before submission to the server.
-    validateRequired() {
-      this.errors.title =
-        this.media.title.length >= 1 ? "" : "Title is required.";
-      this.errors.authors =
-        this.media.authors.length >= 1
-          ? ""
-          : "At least one author is required.";
-      this.errors.format =
-        this.media.format.length >= 1 ? "" : "A format is required.";
-    },
-    // Convert strings to arrays and remove whitespace
-    splitAndTrimWS(x) {
-      if (Array.isArray(x)) {
-        return x;
-      } else {
-        let items = x.split(",");
-
-        let trimmedItems = [];
-        if (items.length > 0) {
-          for (const i of items) {
-            trimmedItems.push(i.trim());
-          }
-        }
-        return trimmedItems;
-      }
-    },
-    addMedia() {
-      this.validateRequired();
-      console.log(this);
-      if (!this.errors.title && !this.errors.authors && !this.errors.format) {
-        let authorsArray = this.splitAndTrimWS(this.media.authors);
-        let data = {
-          title: this.media.title,
-          authors: authorsArray,
-          date_added: this.media.date_added,
-          format: this.media.format,
-          publish_date: this.media.publish_date,
-          genres:
-            this.media.genres != []
-              ? this.splitAndTrimWS(this.media.genres)
-              : [],
-          have_used: this.media.have_used == "Yes, I have!" ? true : false,
-          date_last_used: this.media.date_last_used,
-          keywords:
-            this.media.keywords != []
-              ? this.splitAndTrimWS(this.media.keywords)
-              : [],
-          languages:
-            this.media.languages != []
-              ? this.splitAndTrimWS(this.media.languages)
-              : [],
-          isbn: this.media.isbn,
-          size: this.media.size,
-          notes:
-            this.media.notes != [] ? this.splitAndTrimWS(this.media.notes) : [],
-        };
-        console.log(data);
-
-        LibraryService.create(data)
-          .then((response) => {
-            this.media.id = response.data.id;
-            console.log(response.data);
-            this.submitted = true;
-          })
-          .catch((x) => {
-            console.log(x);
-          });
-      } else {
-        console.log(this.errors);
-      }
-    },
-    createAnother() {
-      this.submitted = false;
-      this.media = {};
-      this.media.date_added = this.getTodayDate();
-    },
-  },
-  beforeMount() {
-    this.media.date_added = this.getTodayDate();
-    console.log(this.media.date_added);
-  },
-};
-</script>
 
 <style>
 .error_message {
