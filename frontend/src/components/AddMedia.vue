@@ -34,7 +34,6 @@ export default {
     // Used to autopopulated the added date field by generating today's date in YYYY-MM-DD format
     getTodayDate() {
       let today = new Date();
-      console.log(today);
       return `${today.getFullYear()}-${(today.getMonth() + 1)
         .toString()
         .padStart(2, "0")}-${today.getDate()}`;
@@ -68,7 +67,7 @@ export default {
     },
     addMedia() {
       this.validateRequired();
-      console.log(this);
+
       if (!this.errors.title && !this.errors.authors && !this.errors.format) {
         let authorsArray = this.splitAndTrimWS(this.media.authors);
         let data = {
@@ -96,12 +95,10 @@ export default {
           notes:
             this.media.notes != [] ? this.splitAndTrimWS(this.media.notes) : [],
         };
-        console.log(data);
 
         LibraryService.create(data)
           .then((response) => {
             this.media.id = response.data.id;
-            console.log(response.data);
             this.submitted = true;
           })
           .catch((x) => {
@@ -119,7 +116,6 @@ export default {
   },
   beforeMount() {
     this.media.date_added = this.getTodayDate();
-    console.log(this.media.date_added);
   },
 };
 </script>

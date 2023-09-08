@@ -21,7 +21,6 @@ export default {
         LibraryService.getAll()
           .then((response) => {
             this.library = response.data;
-            console.log(response.data);
             this.setFocusMedia(this.library[0], 0);
           })
           .catch((x) => {
@@ -31,7 +30,6 @@ export default {
         LibraryService.getAllOfFormat(this.format)
           .then((response) => {
             this.library = response.data;
-            console.log(response.data);
             this.setFocusMedia(this.library[0], 0);
           })
           .catch((x) => {
@@ -52,7 +50,6 @@ export default {
     deleteMedia() {
       LibraryService.delete(this.currentMedia.id)
         .then((response) => {
-          console.log(response.data);
           this.refresh();
         })
         .catch((e) => {
@@ -62,7 +59,6 @@ export default {
     setFocusMedia(media, index) {
       this.currentMedia = media ? media : null;
       this.currentIndex = media ? index : -1;
-      console.log(this.library, "lib");
     },
     refresh() {
       this.currentMedia = null;
@@ -78,7 +74,6 @@ export default {
     this.$watch(
       () => this.$route.params.format,
       (toParams, prvParams) => {
-        console.log(this.requested_format);
         this.format = this.$route.params.format;
         this.retrieveMedia();
       },
