@@ -40,7 +40,6 @@ export default {
       LibraryService.search(this.search_value)
         .then((response) => {
           this.library = response.data;
-          console.log(response.data);
           this.setFocusMedia(this.library[0], 0);
         })
         .catch((x) => {
@@ -50,7 +49,6 @@ export default {
     deleteMedia() {
       LibraryService.delete(this.currentMedia.id)
         .then((response) => {
-          console.log(response.data);
           this.refresh();
         })
         .catch((e) => {
@@ -59,7 +57,6 @@ export default {
     },
     updateMedia() {
       this.validateRequired();
-      console.log(this);
       if (!this.errors.title && !this.errors.authors && !this.errors.format) {
         let data = {
           title: this.currentMedia.title,
@@ -86,12 +83,10 @@ export default {
               ? this.splitAndTrimWS(this.currentMedia.notes)
               : [],
         };
-        console.log(data);
 
         LibraryService.update(this.currentMedia.id, data)
           .then((response) => {
             this.currentMedia.id = response.data.id;
-            console.log(response.data);
             this.update_success = true;
             this.editing_mode = false;
           })
@@ -115,7 +110,6 @@ export default {
     },
     // Convert strings to arrays and remove whitespace
     splitAndTrimWS(x) {
-      console.log(x);
       if (Array.isArray(x)) {
         return x;
       } else {
@@ -149,7 +143,6 @@ export default {
       LibraryService.get(this.$route.params.id)
         .then((response) => {
           this.library[0] = response.data;
-          console.log(response.data);
           this.currentMedia = this.library[0];
           this.setFocusMedia(this.library[0], 0);
           this.editing_mode = true;
