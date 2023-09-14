@@ -105,8 +105,9 @@ export default {
       </ul>
     </div>
     <div class="summary">
-      <button class="update" @click="redirectUpdate">Update this Media</button>
       <div v-if="currentMedia">
+        <h3>Details for: {{ currentMedia.title }}</h3>
+        --- --- --- --- --- --- --- ---
         <div>
           <label class="green summary-label">Title:</label>
           {{ currentMedia.title }}<br />
@@ -136,8 +137,17 @@ export default {
           {{ currentMedia.notes }}<br />
           <label class="green summary-label">ID:</label>
           {{ currentMedia.id }}<br />
+          --- --- --- --- --- --- --- ---
         </div>
-        <button class="delete" @click="deleteMedia">Delete this media</button>
+
+        <p>
+          <button class="update btn" @click="redirectUpdate">
+            Update this Media
+          </button>
+        </p>
+        <button class="delete btn" @click="deleteMedia">
+          Delete this media
+        </button>
       </div>
     </div>
   </div>
@@ -164,7 +174,8 @@ export default {
   grid-column: 3;
 }
 
-.delete {
-  margin-top: 2rem;
+.btn {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 </style>
