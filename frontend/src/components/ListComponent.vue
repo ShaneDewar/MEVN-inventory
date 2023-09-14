@@ -106,7 +106,7 @@ export default {
     </div>
     <div class="summary">
       <div v-if="currentMedia">
-        <h3>Details for: {{ currentMedia.title }}</h3>
+        <h2>Details for: {{ currentMedia.title }}</h2>
         --- --- --- --- --- --- --- ---
         <div>
           <label class="green summary-label">Title:</label>
@@ -141,11 +141,11 @@ export default {
         </div>
 
         <p>
-          <button class="update btn" @click="redirectUpdate">
+          <button class="update list-btn" @click="redirectUpdate">
             Update this Media
           </button>
         </p>
-        <button class="delete btn" @click="deleteMedia">
+        <button class="delete list-btn" @click="deleteMedia">
           Delete this media
         </button>
       </div>
@@ -172,10 +172,5 @@ export default {
 }
 .summary {
   grid-column: 3;
-}
-
-.btn {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 </style>

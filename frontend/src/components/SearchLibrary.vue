@@ -413,7 +413,7 @@ export default {
         </div>
         <div>
           <button type="submit" @click="updateMedia" class="btn submit_success">
-            Update {{ currentMedia.title }} in your library.
+            Save updates for [{{ currentMedia.title }}] in your library.
           </button>
         </div>
       </div>
@@ -424,8 +424,8 @@ export default {
         <div v-if="this.update_success">
           <h2>{{ currentMedia.title }} updated successfully.</h2>
         </div>
-        <h1>{{ currentMedia.title }}</h1>
-        <div><button @click="switchToEditingMode">Update</button></div>
+        <h2>Details for: {{ currentMedia.title }}</h2>
+        --- --- --- --- --- --- --- ---
         <div>
           <label class="green summary-label">Title:</label>
           {{ currentMedia.title }}<br />
@@ -455,8 +455,16 @@ export default {
           {{ currentMedia.notes }}<br />
           <label class="green summary-label">ID:</label>
           {{ currentMedia.id }}<br />
+          --- --- --- --- --- --- --- ---
         </div>
-        <button class="delete" @click="deleteMedia">Delete this media</button>
+        <p>
+          <button class="edit list-btn" @click="switchToEditingMode">
+            Edit Toggle Mode (Doesn't save changes)
+          </button>
+        </p>
+        <button class="delete list-btn" @click="deleteMedia">
+          Delete this media
+        </button>
       </div>
     </div>
   </div>
@@ -486,10 +494,6 @@ export default {
 .media-update {
   grid-column: 2;
   margin-right: 0.5rem;
-}
-
-.delete {
-  margin-top: 2rem;
 }
 
 .small-space {
