@@ -1,29 +1,33 @@
-# frontend
+# CRUD Vue 3, Vue Router, Vite, Axios, Node front end
 
-This template should help get you started developing with Vue 3 in Vite.
+## Description
 
-## Recommended IDE Setup
+This is a single page application front end intended to consume REST APIs. It is modelled on a personal media library where the user can add, update, delete and search through their personal media titles. Vue 3 provides the reactive web interface, vue-router is used to handle component navigation within the SPA, Axios is used to send and receive the HTTP requests and vite is used for building and testing.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[future images][future architecture/flow images]
 
-## Customize configuration
+This was designed with the NodeJS, Express, Mongoose, MongoDB server backend [link]. This is half of my MEVN Library project.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Table of Contents
 
-## Project Setup
+- [Description](#description)
 
-```sh
-npm install
-```
+## Installation
 
-### Compile and Hot-Reload for Development
+`npm install`
 
-```sh
-npm run dev
-```
+### Start Dev Environment
 
-### Compile and Minify for Production
+- Hot reloading version that runs on a vite bundled server to allow quick adjustments.
 
-```sh
-npm run build
-```
+`npm run dev`
+
+### Start Production Environment
+
+`vite build`
+
+## Usage
+
+## License
+
+Licensed under the [MIT](LICENSE) license.
