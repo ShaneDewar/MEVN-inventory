@@ -25,9 +25,6 @@ db.mongoose
 
 require("./routes/media.routes.js")(server);
 
-server.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 server.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
