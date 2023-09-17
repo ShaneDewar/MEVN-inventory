@@ -1,4 +1,4 @@
-# CRUD Vue 3, Vue Router, Vite, Axios, Node front end
+# CRUD Vue 3, Vue Router, Vite, Axios front end
 
 ## Description
 
