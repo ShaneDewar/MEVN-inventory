@@ -169,6 +169,7 @@ export default {
           required
           v-model="search_value"
           name="search_value"
+          maxlength="120"
         />
       </form>
       <br />
@@ -204,6 +205,7 @@ export default {
                   required
                   v-model="currentMedia.title"
                   name="media_title"
+                  maxlength="120"
                 />
                 <p class="error_message" v-if="errors.title">
                   {{ errors.title }}
@@ -219,6 +221,7 @@ export default {
                   v-model="currentMedia.authors"
                   name="media_authors"
                   placeholder="Author 1, Author 2, ..."
+                  maxlength="200"
                 />
                 <p class="error_message" v-if="errors.authors">
                   {{ errors.authors }}
@@ -326,6 +329,7 @@ export default {
                   v-model="currentMedia.genres"
                   name="media_genres"
                   placeholder="Genre 1, Genre 2, ..."
+                  maxlength="120"
                 />
               </div>
 
@@ -365,6 +369,7 @@ export default {
                   v-model="currentMedia.keywords"
                   name="media_keywords"
                   placeholder="Skiing, Equipment, Switzerland ..."
+                  maxlength="200"
                 />
               </div>
 
@@ -376,6 +381,7 @@ export default {
                   v-model="currentMedia.languages"
                   name="media_languages"
                   placeholder="PHP, French, Morse..."
+                  maxlength="200"
                 />
               </div>
 
@@ -386,6 +392,7 @@ export default {
                   id="media_isbn"
                   v-model="currentMedia.isbn"
                   name="media_isbn"
+                  maxlength="120"
                 />
               </div>
 
@@ -396,6 +403,7 @@ export default {
                   id="media_size"
                   v-model="currentMedia.size"
                   name="media_size"
+                  maxlength="120"
                 />
               </div>
 
@@ -406,6 +414,7 @@ export default {
                   id="media_notes"
                   v-model="currentMedia.notes"
                   name="media_notes"
+                  maxlength="1200"
                 />
               </div>
             </div>
