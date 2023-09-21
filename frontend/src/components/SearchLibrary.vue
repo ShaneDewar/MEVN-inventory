@@ -170,6 +170,7 @@ export default {
           v-model="search_value"
           name="search_value"
           maxlength="120"
+          placeholder="Whole words, case insensitive, min of 3 characters"
         />
       </form>
       <br />
