@@ -110,7 +110,29 @@ export default {
     },
     createAnother() {
       this.submitted = false;
-      this.media = {};
+      this.media = {
+        id: null,
+        media: "",
+        title: "",
+        authors: [],
+        format: "",
+        publish_date: "",
+        date_added: "",
+        genres: [],
+        have_used: "",
+        date_last_used: "",
+        keywords: [],
+        languages: [],
+        isbn: "",
+        size: "",
+        notes: [],
+      };
+      this.errors = {
+        title: "",
+        authors: "",
+        format: "",
+      };
+      this.submitted = false;
       this.media.date_added = this.getTodayDate();
     },
   },
