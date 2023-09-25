@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a single page application front end intended to consume REST APIs. It is modelled on a personal media library where the user can add, update, delete and search through their personal media titles. Vue 3 provides the reactive web interface, vue-router is used to handle component navigation within the SPA, Axios is used to send and receive the HTTP requests and vite is used for building and testing.
+This is a single page application Vue 3 front end intended to consume REST APIs. It is modelled on a personal media library where the user can add, update, delete and search through their personal media titles. Vue 3 provides the reactive web interface, vue-router is used to handle component navigation within the SPA, Axios is used to send and receive the HTTP requests and vite is used for building and testing.
 
 [future images][future architecture/flow images]
 
