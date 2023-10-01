@@ -14,6 +14,10 @@ This was designed with the NodeJS, Express, Mongoose, MongoDB server backend [li
 
 ## Installation
 
+- Make sure npm is installed.
+
+Then
+
 `npm install`
 
 ### Start Dev Environment
