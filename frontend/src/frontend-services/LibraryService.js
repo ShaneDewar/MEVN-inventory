@@ -6,6 +6,7 @@ const http = axios.create({
   headers: {
     "Content-type": "application/json",
   },
+  protocol: "https",
 });
 
 class LibraryService {
