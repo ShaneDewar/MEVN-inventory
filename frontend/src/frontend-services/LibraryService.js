@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:3033",
+  // baseURL: "http://localhost:3033",
+  baseURL: "http://backend:3033", // Docker container on same docker network
   headers: {
     "Content-type": "application/json",
   },
