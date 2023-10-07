@@ -96,6 +96,13 @@ export default {
             this.media.notes != [] ? this.splitAndTrimWS(this.media.notes) : [],
         };
 
+        // test fetch instead of axios. Future change
+        // const d = { title: "test1", authors: ["yukk"], date_added: "2023-10-5", format: "Softcover", publish_date: "", };
+        // const options = { method: "POST", headers: { "Content-Type": "application/json", }, body: JSON.stringify(d), };
+        // fetch("/api/create", options);
+        // console.log("did some fetch");
+
+
         LibraryService.create(data)
           .then((response) => {
             this.media.id = response.data.id;
