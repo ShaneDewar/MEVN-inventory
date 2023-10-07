@@ -2,7 +2,7 @@ import axios from "axios";
 
 const http = axios.create({
   // baseURL: "http://localhost:3033",
-  baseURL: "http://backend:3033", // Docker container on same docker network
+  baseURL: "http://backend:3033/api", // Docker container on same docker network
 
   protocol: "https",
   headers: {
@@ -34,7 +34,7 @@ class LibraryService {
 
   create(data) {
     const serializedData = JSON.stringify(data);
-    console.log("sending data: ", serializedData);
+    // console.log("sending data: ", serializedData);
     return http.post(`/create`, serializedData);
   }
 
