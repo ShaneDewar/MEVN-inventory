@@ -48,6 +48,13 @@
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
   }
+
+}
+
+@media (max-width: 767px) {
+  #nav {
+    transform:scale(0.8);
+  }
 }
 
 *,
