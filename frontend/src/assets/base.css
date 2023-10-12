@@ -52,8 +52,13 @@
 }
 
 @media (max-width: 767px) {
+  :root {
+    overflow-y: scroll;
+  }
+  
   #nav {
     transform:scale(0.8);
+    overflow-y: scroll;
   }
 }
 
